@@ -123,6 +123,7 @@ header .header_nav nav ul li a {
   color: #FFFFFF;
   text-decoration: none;
   font-size: 15px;
+  text-transform: uppercase;
 }
 
 header .header_nav nav ul .underline {
@@ -172,174 +173,41 @@ header .header_nav nav label i {
   font-size: 6vw;
 }
 
-main .search {
+main .create {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 70vh;
 }
 
-main .search h1 {
-  font-weight: bold;
-  font-size: 25px;
-  text-align: center;
-  margin: 5% 12%;
+main .create .container {
+  border: 1px solid;
+  padding: 20px;
 }
 
-main .search h1 span {
-  color: #50E3C2;
+main .create .container .subcontainer {
+  background: linear-gradient(to right, black 4px, transparent 4px) 0 0, linear-gradient(to right, black 4px, transparent 4px) 0 100%, linear-gradient(to left, black 4px, transparent 4px) 100% 0, linear-gradient(to left, black 4px, transparent 4px) 100% 100%, linear-gradient(to bottom, black 4px, transparent 4px) 0 0, linear-gradient(to bottom, black 4px, transparent 4px) 100% 0, linear-gradient(to top, black 4px, transparent 4px) 0 100%, linear-gradient(to top, black 4px, transparent 4px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
 }
 
-main .search .browser {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 2%;
+main .create .container .subcontainer h1 {
+  margin: 0px;
+  padding: 20px 0;
 }
 
-main .search .browser .people {
-  width: 77%;
-}
-
-main .search .browser .icon_browser {
-  width: 95%;
-}
-
-main .search .browser .icon_browser input {
-  border-radius: 27px;
-  width: 98%;
-  height: 40px;
-  border-width: 1px;
-  border-color: #572EE5;
-}
-
-main .search .browser .icon_browser input::-webkit-input-placeholder {
-  color: #6B7989;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  position: relative;
-  left: 15%;
-}
-
-main .search .browser .icon_browser input:-ms-input-placeholder {
-  color: #6B7989;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  position: relative;
-  left: 15%;
-}
-
-main .search .browser .icon_browser input::-ms-input-placeholder {
-  color: #6B7989;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  position: relative;
-  left: 15%;
-}
-
-main .search .browser .icon_browser input::placeholder {
-  color: #6B7989;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  position: relative;
-  left: 15%;
-}
-
-main .search .browser .icon_browser img {
-  position: relative;
-  bottom: 33px;
-  left: 88%;
-}
-
-main .search .trending {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 7% 5% 10%;
-}
-
-main .search .trending h3 {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-main .search .trending p {
-  text-align: center;
-  margin: 5% 15%;
-  font-size: 14px;
-}
-
-main .trending_gifos {
-  background-color: #F3F5F8;
-  padding: 15% 0 25%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  overflow: hidden;
-}
-
-main .trending_gifos .title h2 {
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-}
-
-main .trending_gifos .title p {
-  color: #000000;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  text-align: center;
-  margin: 6% 0 15%;
-}
-
-main .trending_gifos .preview_gifos .slider_gifos {
-  height: 250px;
-}
-
-main .trending_gifos .preview_gifos .slider_gifos img {
-  display: none;
-}
-
-main .trending_gifos .preview_gifos .gifos_carrousel {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 250px;
-}
-
-main .trending_gifos .preview_gifos .gifos_carrousel iframe {
-  height: 100%;
+main .create .container .subcontainer p {
+  margin: 0px;
+  padding: 20px 0;
 }
 
 footer {
-  height: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -444,93 +312,37 @@ footer p {
   header .header_nav nav ul .underline {
     display: none;
   }
-  main .search h1 {
-    font-size: 35px;
-  }
-  main .search .browser {
-    width: 60%;
-  }
-  main .search .browser .icon_browser {
-    width: 100%;
-  }
-  main .search .browser .icon_browser input::-webkit-input-placeholder {
-    color: #9CAFC3;
-    left: 10%;
-  }
-  main .search .browser .icon_browser input:-ms-input-placeholder {
-    color: #9CAFC3;
-    left: 10%;
-  }
-  main .search .browser .icon_browser input::-ms-input-placeholder {
-    color: #9CAFC3;
-    left: 10%;
-  }
-  main .search .browser .icon_browser input::placeholder {
-    color: #9CAFC3;
-    left: 10%;
-  }
-  main .search .trending {
-    margin: unset;
-    margin: 2% 0 5% 0;
-  }
-  main .search .trending h3 {
-    font-size: 18px;
-  }
-  main .search .trending p {
-    font-size: 16px;
-    margin: 5% 0;
-  }
-  main .trending_gifos {
-    padding: 5% 0 15%;
-  }
-  main .trending_gifos .title h2 {
-    font-size: 25px;
-  }
-  main .trending_gifos .title p {
-    font-size: 18px;
-    margin: 2% 0 5%;
-  }
-  main .trending_gifos .title p br {
-    display: none;
-  }
-  main .trending_gifos .preview_gifos .slider_gifos {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
-  main .trending_gifos .preview_gifos .slider_gifos img {
-    display: block;
-    width: 40px;
-    padding: 1%;
-  }
-  footer {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    padding: 2% 15%;
-    font-size: 13px;
-  }
-  footer .social {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    width: 50%;
-    font-size: 13px;
-  }
-  footer .social p {
-    width: 100px;
-    padding-right: 5%;
-  }
-  footer .social .social_icons {
-    margin: unset;
-    width: 30%;
-  }
 }
-/*# sourceMappingURL=style.css.map */
+
+main .search h1 {
+  font-size: 35px;
+}
+
+main .browser {
+  width: 60%;
+}
+
+main .browser .icon_browser {
+  width: 100%;
+}
+
+main .browser .icon_browser input::-webkit-input-placeholder {
+  color: #9CAFC3;
+  left: 0;
+}
+
+main .browser .icon_browser input:-ms-input-placeholder {
+  color: #9CAFC3;
+  left: 0;
+}
+
+main .browser .icon_browser input::-ms-input-placeholder {
+  color: #9CAFC3;
+  left: 0;
+}
+
+main .browser .icon_browser input::placeholder {
+  color: #9CAFC3;
+  left: 0;
+}
+/*# sourceMappingURL=create_gifos.css.map */

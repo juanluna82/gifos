@@ -1,80 +1,15 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0b1 | 201101 
-   NOTE: WORK IN PROGRESS
-   USE WITH CAUTION AND TEST WITH ABANDON */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-
-/* remember to define visible focus styles! 
-   :focus {
-     outline: ?????;
-   } */
-/* remember to highlight inserts somehow! */
-ins {
-  text-decoration: none;
-}
-
-del {
-  text-decoration: line-through;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
+/*SCSS para cambiar a modo nocturno cuando hacen click*/
 body {
   font-family: "Montserrat", sans-serif;
   max-width: 1440px;
   margin: auto;
-  color: #572EE5;
+  color: #FFFFFF;
+  background-color: #37383C;
 }
 
 header .line {
   height: 5px;
-  background-color: #572EE5;
+  background-color: #000000;
 }
 
 header .header_nav {
@@ -103,7 +38,7 @@ header .header_nav nav {
 header .header_nav nav ul {
   display: none;
   position: absolute;
-  background: #572EE5;
+  background: #37383C;
   height: 100vh;
   left: 0px;
   top: 25vw;
@@ -226,7 +161,8 @@ main .search .browser .icon_browser input {
   width: 98%;
   height: 40px;
   border-width: 1px;
-  border-color: #572EE5;
+  border-color: #FFFFFF;
+  background-color: #37383C;
 }
 
 main .search .browser .icon_browser input::-webkit-input-placeholder {
@@ -293,7 +229,7 @@ main .search .trending p {
 }
 
 main .trending_gifos {
-  background-color: #F3F5F8;
+  background-color: #222326;
   padding: 15% 0 25%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -312,7 +248,7 @@ main .trending_gifos .title h2 {
 }
 
 main .trending_gifos .title p {
-  color: #000000;
+  color: #FFFFFF;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   text-align: center;
@@ -339,7 +275,6 @@ main .trending_gifos .preview_gifos .gifos_carrousel iframe {
 }
 
 footer {
-  height: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -355,7 +290,7 @@ footer {
           align-items: center;
   padding: 15% 10% 5%;
   font-family: "Roboto", sans-serif;
-  color: #000000;
+  color: #FFFFFF;
 }
 
 footer .social {
@@ -394,143 +329,6 @@ footer p {
 .line {
   width: 100%;
   height: 5px;
-  background-color: #572EE5;
+  background-color: #000000;
 }
-
-@media screen and (min-width: 800px) {
-  header .header_nav {
-    height: unset;
-    margin: 2% 2%;
-  }
-  header .header_nav .logo {
-    height: 5vw;
-  }
-  header .header_nav nav {
-    width: 50%;
-    margin: unset;
-  }
-  header .header_nav nav input {
-    display: none;
-  }
-  header .header_nav nav label {
-    display: none;
-  }
-  header .header_nav nav ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    height: unset;
-    background-color: unset;
-    position: unset;
-    padding-top: unset;
-    opacity: unset;
-    left: unset;
-    top: unset;
-  }
-  header .header_nav nav ul li {
-    height: auto;
-    margin-top: unset;
-  }
-  header .header_nav nav ul li a {
-    color: #572EE5;
-    font-weight: bold;
-    font-size: 13px;
-  }
-  header .header_nav nav ul .underline {
-    display: none;
-  }
-  main .search h1 {
-    font-size: 35px;
-  }
-  main .search .browser {
-    width: 60%;
-  }
-  main .search .browser .icon_browser {
-    width: 100%;
-  }
-  main .search .browser .icon_browser input::-webkit-input-placeholder {
-    color: #9CAFC3;
-    left: 10%;
-  }
-  main .search .browser .icon_browser input:-ms-input-placeholder {
-    color: #9CAFC3;
-    left: 10%;
-  }
-  main .search .browser .icon_browser input::-ms-input-placeholder {
-    color: #9CAFC3;
-    left: 10%;
-  }
-  main .search .browser .icon_browser input::placeholder {
-    color: #9CAFC3;
-    left: 10%;
-  }
-  main .search .trending {
-    margin: unset;
-    margin: 2% 0 5% 0;
-  }
-  main .search .trending h3 {
-    font-size: 18px;
-  }
-  main .search .trending p {
-    font-size: 16px;
-    margin: 5% 0;
-  }
-  main .trending_gifos {
-    padding: 5% 0 15%;
-  }
-  main .trending_gifos .title h2 {
-    font-size: 25px;
-  }
-  main .trending_gifos .title p {
-    font-size: 18px;
-    margin: 2% 0 5%;
-  }
-  main .trending_gifos .title p br {
-    display: none;
-  }
-  main .trending_gifos .preview_gifos .slider_gifos {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
-  main .trending_gifos .preview_gifos .slider_gifos img {
-    display: block;
-    width: 40px;
-    padding: 1%;
-  }
-  footer {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    padding: 2% 15%;
-    font-size: 13px;
-  }
-  footer .social {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    width: 50%;
-    font-size: 13px;
-  }
-  footer .social p {
-    width: 100px;
-    padding-right: 5%;
-  }
-  footer .social .social_icons {
-    margin: unset;
-    width: 30%;
-  }
-}
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=nocturno.css.map */

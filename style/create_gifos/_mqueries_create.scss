@@ -1,0 +1,85 @@
+@media screen and (min-width: 800px) {
+
+    //HEADER /////////////////////////////@at-root
+    
+        header {
+            .header_nav {
+               //margin: unset;
+               height: unset;
+               margin: 2% 2%;
+    
+               .logo{
+                   height: 5vw;
+               }
+                nav {
+                    width: 50%;
+                    margin: unset;
+                    input {
+                        display: none;
+                    }
+                    label {
+                        display: none;
+                    }
+                    ul {
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                        height: unset;
+                        background-color: unset;
+                        position: unset;
+                        padding-top: unset;
+                        opacity: unset;
+                        left: unset;
+                        top: unset;
+    
+    
+                        li{
+                            height: auto;
+                            margin-top: unset;
+                            a {
+                                color: $color-principal;
+                                font-weight: bold;
+                                font-size: 13px;
+                            }
+                        }
+    
+                        .underline {
+                            display: none;
+                        }
+                     
+                    }
+    
+                }
+            }    
+        }
+    }
+    
+    // MAIN /////////////////////////////////////////
+    
+    main {
+    
+        // SEARCH /////////////////////
+        .search {
+    
+            h1 {
+                font-size: 35px;
+            }
+        }
+    
+        //BROWSER /////////////////////////////////
+        .browser {
+            width: 60%;
+            
+            .icon_browser {
+                width: 100%;
+                input {
+                    &::placeholder {
+                        color: $color-fifth;
+                        left: 0;
+                    } 
+                }
+    
+            }
+        }
+    
+    }

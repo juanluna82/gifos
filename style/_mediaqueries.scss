@@ -1,0 +1,159 @@
+@media screen and (min-width: 800px) {
+
+//HEADER /////////////////////////////@at-root
+
+    header {
+        .header_nav {
+           //margin: unset;
+           height: unset;
+           margin: 2% 2%;
+
+           .logo{
+               height: 5vw;
+           }
+            nav {
+                width: 50%;
+                margin: unset;
+                input {
+                    display: none;
+                }
+                label {
+                    display: none;
+                }
+                ul {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    height: unset;
+                    background-color: unset;
+                    position: unset;
+                    padding-top: unset;
+                    opacity: unset;
+                    left: unset;
+                    top: unset;
+
+
+                    li{
+                        height: auto;
+                        margin-top: unset;
+                        a {
+                            color: $color-principal;
+                            font-weight: bold;
+                            font-size: 13px;
+                        }
+                    }
+
+                    .underline {
+                        display: none;
+                    }
+                 
+                }
+
+            }
+        }    
+    }
+
+        // MAIN /////////////////////////////////////////
+
+    main {
+
+        // SEARCH /////////////////////
+        .search {
+
+            h1 {
+                font-size: 35px;
+            }
+        
+
+            //BROWSER /////////////////////////////////
+            .browser {
+                width: 60%;
+                
+                .icon_browser {
+                    width: 100%;
+                    input {
+                        &::placeholder {
+                            color: $color-fifth;
+                            left: 10%;
+                        } 
+                    }
+
+                }
+            }
+
+            //TRENDING //////////////////////////////////
+
+            .trending {
+                margin: unset;
+                margin: 2% 0 5% 0;
+                h3 {
+                    font-size: 18px;
+                                    }
+                p {
+                    font-size: 16px;
+                    margin: 5% 0;
+                }
+            }
+        }
+
+        //TRENDING GIFOS ////////////////
+        .trending_gifos{
+            padding: 5% 0 15%;
+
+            .title {
+                h2 {
+                    font-size: 25px;
+
+                }
+                p{
+                    font-size: 18px;
+                    margin: 2% 0 5%;
+                    br {
+                        display: none;
+                    }
+                }
+            }
+            
+            .preview_gifos {
+            
+                .slider_gifos {
+                    display: flex;
+                    justify-content: space-around;
+                    img {
+                        display: block;
+                        width: 40px;
+                        padding: 1%;
+                    }
+                }
+            }
+        }
+
+    }
+
+    //FOOTER//////////////////////
+
+    footer {
+        flex-direction: row;
+        padding: 2% 15%;
+        font-size: 13px;
+
+        .social {
+            flex-direction: row;
+            justify-content: flex-start;
+            width: 50%;
+            font-size: 13px;
+
+
+            p{
+                width: 100px;
+                padding-right: 5%;
+            }
+            .social_icons {
+                margin: unset;
+                width: 30%;
+            }
+        }
+
+    }
+}
+
