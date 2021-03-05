@@ -1,14 +1,17 @@
-/*funcion para pasar cambiar de logo cuando paso a modo nocturno */ 
+/*funcion para pasar camodo nocturno cuando aprieto el MODO NOCTURNO */ 
 
-//imgToChangeAtt.setAttribute("alt", "Placeholder image nuevo")
+let clickNoc = document.getElementById("click_mn");
+console.log(clickNoc);
+clickNoc.addEventListener('click', () => {
+            let noc_mode = document.getElementById("noc_mode");
+        noc_mode.setAttribute("href", "style/nocturno/nocturno.css");
+        clickNoc.textContent = "Modo Diurno";
+        clickNoc.setAttribute("id", "click_md");
+        console.log(clickNoc);
+    
 
-let clickBox = document.getElementById("clickBox");
-clickBox.addEventListener('click', () => {
-    let imgToChangeAtt = document.getElementById("logo");
-//imgToChangeAtt.setAttribute("src", "assets/Logo-modo-noc.svg");
-    imgToChangeAtt.setAttribute("src", "assets/Logo-modo-noc.svg");
 });
-let clickBoxOn = document.getElementById("clickBoxOn");
-clickBoxOn.onclick = () => {
-    clickBoxOn.classList.toggle('color');
-};
+
+
+        // Modo diurno
+
