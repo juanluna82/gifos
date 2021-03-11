@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto GIFOS</title>
-    
-    <!-- <link rel="stylesheet" href="style/nocturno/nocturno.css"> --> 
-    <link id= "noc_mode" rel="stylesheet" href="style/style.css">
+
+    <link id="noc_mode" rel="stylesheet" href="style/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Roboto:wght@400;500&display=swap"
@@ -29,12 +28,12 @@
                 <label class="menu_x" for="menu"><i class="fas fa-times"></i></label>
 
                 <ul>
-                    <li><a id= "click_mn" href="#">Modo Nocturno</a></li>
+                    <li><a id="click_mn" href="#">Modo Nocturno</a></li>
                     <div class="underline"></div>
                     <li><a href="#">Favoritos</a></li>
                     <div class="underline"></div>
                     <li><a href="#">Mis GIFOS</a></li>
-                    <li><img src="assets/button-crear-gifo.svg" alt=""></a></li>
+                    <li><img id="create" src="assets/button-crear-gifo.svg" alt=""></a></li>
                 </ul>
             </nav>
         </div>
@@ -57,31 +56,65 @@
                 <p>Reactions, Entertainment, Sports, Stickers, Artists</p>
             </div>
         </div>
- 
+
         <div class="trending_gifos">
 
             <div class="title">
                 <h2>Trending GIFOS</h2>
-                <p>Mira los últimos <br> GIFO de nuestra comunidad.</p> 
+                <p>Mira los últimos <br> GIFO de nuestra comunidad.</p>
             </div>
 
             <div class="preview_gifos">
                 <div class="slider_gifos">
-                    <img src="assets/button-slider-left.svg" alt="">
+                    <img class="arrow" id="left" src="assets/button-slider-left.svg" alt="">
                     <div class="gifos_carrousel">
+                        <div class="gifos">
+                            <div class="icons_gifos">
+                                <a href="#" target="_blank"><img id="favourites" class="fav" src="assets/icon-fav.svg"
+                                        alt="#"></a>
 
-                        <iframe src="https://giphy.com/embed/luliI7KNfAi0g2lI9c"class="giphy-embed" allowFullScreen></iframe>
-                        
+                                <a href="#" target="_blank"><img id="down" class="down" src="assets/icon-download.svg"
+                                        alt="#"></a>
 
-                        <iframe src="https://giphy.com/embed/rio5EhoYY6W4WfRnaH" class="giphy-embed" allowFullScreen></iframe>
+                                <a href="#" target="_blank"><img id="max" class="max" src="assets/icon-max-normal.svg"
+                                        alt="#"></a>
 
-                        <iframe src="https://giphy.com/embed/meIJk6bwJL87o2fVUL" class="giphy-embed" allowFullScreen></iframe>
+                            </div>
+                            <img class="gif" src="https://picsum.photos/200/200" alt="">
+                            <div class="user">
+                                <h2>User</h2>
+                                <p>Titulo gifos</p>
+                            </div>
 
+                        </div>
+                        <div class="gifos">
+                            <div class="icons_gifos">
+                                <a href="#" target="_blank"><img id="favourites" class="fav" src="assets/icon-fav.svg"
+                                        alt="#"></a>
 
+                                <a href="#" target="_blank"><img id="down" class="down" src="assets/icon-download.svg"
+                                        alt="#"></a>
 
+                                <a href="#" target="_blank"><img id="max" class="max" src="assets/icon-max-normal.svg"
+                                        alt="#"></a>
+                            </div>
+                            <img class="gif" src="https://picsum.photos/200/200" alt="">
+                        </div>
+                        <div class="gifos">
+                            <div class="icons_gifos">
+                                <a href="#" target="_blank"><img id="favourites" class="fav" src="assets/icon-fav.svg"
+                                        alt="#"></a>
 
+                                <a href="#" target="_blank"><img id="down" class="down" src="assets/icon-download.svg"
+                                        alt="#"></a>
+
+                                <a href="#" target="_blank"><img id="max" class="max" src="assets/icon-max-normal.svg"
+                                        alt="#"></a>
+                            </div>
+                            <img class="gif" src="https://picsum.photos/200/200" alt="">
+                        </div>
                     </div>
-                    <img src="assets/Button-Slider-right-hover.svg" alt="">
+                    <img class="arrow" id="right" src="assets/button-slider-right.svg" alt="">
                 </div>
             </div>
 
@@ -95,15 +128,23 @@
             <p>Compartir en:</p>
 
             <div class="social_icons">
-                <a href="https://facebook.com" target="_blank"><img src="assets/icon_facebook.svg" alt="#"></a>
-                <a href="https://twitter.com" target="_blank"><img src="assets/icon-twitter.svg" alt="#"></a>
-                <a href="https://instagram.com" target="_blank"><img src="assets/icon_instagram.svg" alt="#"></a>
+                <a href="https://facebook.com" target="_blank"><img class="social_normal" id="facebook"
+                        src="assets/icon_facebook.svg" alt="#"></a>
+
+                <a href="https://twitter.com" target="_blank"><img id="twitter" class="social_normal"
+                        src="assets/icon-twitter.svg" alt="#"></a>
+
+                <a href="https://instagram.com" target="_blank"><img id="instagram" class="social_normal"
+                        src="assets/icon_instagram.svg" alt="#"></a>
+
+
+
             </div>
 
 
         </div>
         <p>© GIFOS 2020 All Rights Reserved.</p>
-        
+
     </footer>
     <div class="line"></div>
 

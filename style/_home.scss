@@ -3,6 +3,9 @@ body {
     max-width: 1440px;
     margin: auto;
     color: $color-principal;
+    *,*:focus,*:hover{
+        outline:none;
+    }
 }
 
 
@@ -144,6 +147,7 @@ main {
             }
             .icon_browser {
                 width: 95%;
+
                 input {
                     border-radius: 27px;
                     width: 98%;
@@ -158,7 +162,10 @@ main {
                         position: relative;
                         left: 15%;
                       }
-                    
+                  /// HAY QUE HACER EL FOCUS  
+    
+
+                
                 }
 
                 img {
@@ -215,35 +222,49 @@ main {
             }
         }
 
+
         .preview_gifos {
             
             .slider_gifos {
                 
-                height: 250px;
-                img {display: none;
+
+                
+                .arrow {display: none;
    
                 }
-            }
 
-            .gifos_carrousel{
-                display: flex;
-                //flex-wrap: nowrap;
-                height: 250px;
-                
-                                
-                
-                iframe {
-                             
-                    height: 100%;
-                    
-                    
-                    
+                .gifos_carrousel{
+                    display: flex;
+                    justify-content: flex-start;
+                    height: 300px;
 
+ 
+                      
+                    .gifos {
+                  
+                        margin: 0 5%;
+
+                        .icons_gifos {
+                            display: none;
+                        }
+
+                        .gif {
+                            width: 70vw;
+                            max-width: 300px;
+                            
+                        }
+
+                        .user {
+                            display: none;
+                        }
+                    }
+                    
                 }
             }
         }
     }
 }
+
 
 //FOOTER///////////////////////////
 
@@ -271,16 +292,20 @@ footer {
             justify-content: space-between;
             margin: 20% 0 30%;
             width: 100%;
-            
+    
+        
+        
+
+
+
         }
+
     }
 
     p {
         font-size: 14px;
         text-align: center;
-        
-
-    }
+        }
 }
 
 .line {
