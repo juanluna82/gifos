@@ -147,13 +147,15 @@ main {
             }
             .icon_browser {
                 width: 95%;
-
+ 
                 input {
                     border-radius: 27px;
                     width: 98%;
                     height: 40px;
                     border-width: 1px;
                     border-color: $color-principal;
+                    padding-left: 5%;
+                    font-family: $font-roboto;
 
                     &::placeholder {
                         color: $color-terciary;
@@ -161,17 +163,38 @@ main {
                         font-family: $font-roboto;
                         position: relative;
                         left: 15%;
+                        
                       }
-                  /// HAY QUE HACER EL FOCUS  
-    
+                      
 
-                
                 }
 
-                img {
+                .lupa {
                     position: relative;
                     bottom: 33px;
                     left: 88%;
+                }
+
+                .suggestion {
+                    border: 1px solid $color-principal;
+                    border-radius: 27px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    padding-top: 5%;
+
+                    .sug{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        padding: 2% 5%;
+
+                        a {
+                            padding-left: 15%;
+                            text-decoration: none;
+                        }
+                    }
                 }
 
             }
