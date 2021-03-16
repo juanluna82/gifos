@@ -42,8 +42,10 @@ header {
                 top: 25vw;
                 padding-top: 10vw;
                 opacity: 90%;
+                z-index: 3;
 
-                
+
+
                 li {
                     
                     list-style: none;
@@ -147,15 +149,35 @@ main {
             }
             .icon_browser {
                 width: 95%;
- 
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .suggestion {
+                    display: none;
+                }
+
+                .close{
+                    display: none;
+                }
+
+                .lupa {
+                    position: absolute;
+                    top: 12px;
+                    right: 5%;
+                }
+               
                 input {
                     border-radius: 27px;
                     width: 98%;
                     height: 40px;
                     border-width: 1px;
                     border-color: $color-principal;
-                    padding-left: 5%;
                     font-family: $font-roboto;
+
+                    position: relative;
 
                     &::placeholder {
                         color: $color-terciary;
@@ -163,39 +185,91 @@ main {
                         font-family: $font-roboto;
                         position: relative;
                         left: 15%;
-                        
-                      }
-                      
 
+                    }
+                                       
                 }
 
-                .lupa {
-                    position: relative;
-                    bottom: 33px;
-                    left: 88%;
-                }
+                 input:focus {
+                    height: 30px;
+                    border: none;
+                    margin-top:7px;
+                    z-index: 1;
+                    width: 77%;
+                    
+                   
 
-                .suggestion {
-                    border: 1px solid $color-principal;
-                    border-radius: 27px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-start;
-                    padding-top: 5%;
+                    &::placeholder {
+                        left: 2vw;
+                        height: 80%;
+                    }
 
-                    .sug{
+
+                    ~  a .lupa {
+                            margin-top:2px;
+                            left: 4vw;
+                            right: unset;
+                            z-index: 1;
+                            opacity: 0.5;
+                            
+                    }
+
+                    ~ .close {
+                        display: block;
+                        position: absolute;
+                        margin-top:2px;
+                        top: 2vh;
+                        right: 5%;
+                        z-index: 1;
+                    }
+
+                    ~ .suggestion {
+
+                        border: 1px solid $color-principal;
+                        border-radius: 27px;
                         display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        padding: 2% 5%;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        width: 100%;
+                        position: absolute;
+                        top: 0;
+                        background-color: white;
+                        z-index: 0;
 
-                        a {
-                            padding-left: 15%;
-                            text-decoration: none;
+                        .sug{
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            padding: 1% 5%;
+                            height: 4vh;
+                            opacity: 0.5;
+
+                            a {
+                                padding-left: 1vw;
+                                text-decoration: none;
+                                color: $color-fifth;
+                                
+                                img {
+                                    width: 90%;
+                                }
+                            }
                         }
+
+                        .sug_none {
+                            border-bottom: 1px solid $color-fifth;
+                            width: 80%;
+                            position: relative;
+                            left: 5%;
+                            margin-bottom: 1%;
+                            padding-bottom: 5%;
+                            
+                            
+                        }
+
                     }
                 }
+
 
             }
         }

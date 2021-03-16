@@ -113,6 +113,7 @@ header .header_nav nav ul {
   top: 25vw;
   padding-top: 10vw;
   opacity: 90%;
+  z-index: 3;
 }
 
 header .header_nav nav ul li {
@@ -223,6 +224,34 @@ main .search .browser .people {
 
 main .search .browser .icon_browser {
   width: 95%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .search .browser .icon_browser .suggestion {
+  display: none;
+}
+
+main .search .browser .icon_browser .close {
+  display: none;
+}
+
+main .search .browser .icon_browser .lupa {
+  position: absolute;
+  top: 12px;
+  right: 5%;
 }
 
 main .search .browser .icon_browser input {
@@ -231,8 +260,8 @@ main .search .browser .icon_browser input {
   height: 40px;
   border-width: 1px;
   border-color: #572EE5;
-  padding-left: 5%;
   font-family: "Roboto", sans-serif;
+  position: relative;
 }
 
 main .search .browser .icon_browser input::-webkit-input-placeholder {
@@ -267,13 +296,52 @@ main .search .browser .icon_browser input::placeholder {
   left: 15%;
 }
 
-main .search .browser .icon_browser .lupa {
-  position: relative;
-  bottom: 33px;
-  left: 88%;
+main .search .browser .icon_browser input:focus {
+  height: 30px;
+  border: none;
+  margin-top: 7px;
+  z-index: 1;
+  width: 77%;
 }
 
-main .search .browser .icon_browser .suggestion {
+main .search .browser .icon_browser input:focus::-webkit-input-placeholder {
+  left: 2vw;
+  height: 80%;
+}
+
+main .search .browser .icon_browser input:focus:-ms-input-placeholder {
+  left: 2vw;
+  height: 80%;
+}
+
+main .search .browser .icon_browser input:focus::-ms-input-placeholder {
+  left: 2vw;
+  height: 80%;
+}
+
+main .search .browser .icon_browser input:focus::placeholder {
+  left: 2vw;
+  height: 80%;
+}
+
+main .search .browser .icon_browser input:focus ~ a .lupa {
+  margin-top: 2px;
+  left: 4vw;
+  right: unset;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+main .search .browser .icon_browser input:focus ~ .close {
+  display: block;
+  position: absolute;
+  margin-top: 2px;
+  top: 2vh;
+  right: 5%;
+  z-index: 1;
+}
+
+main .search .browser .icon_browser input:focus ~ .suggestion {
   border: 1px solid #572EE5;
   border-radius: 27px;
   display: -webkit-box;
@@ -289,10 +357,14 @@ main .search .browser .icon_browser .suggestion {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding-top: 5%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  z-index: 0;
 }
 
-main .search .browser .icon_browser .suggestion .sug {
+main .search .browser .icon_browser input:focus ~ .suggestion .sug {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,12 +374,28 @@ main .search .browser .icon_browser .suggestion .sug {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2% 5%;
+  padding: 1% 5%;
+  height: 4vh;
+  opacity: 0.5;
 }
 
-main .search .browser .icon_browser .suggestion .sug a {
-  padding-left: 15%;
+main .search .browser .icon_browser input:focus ~ .suggestion .sug a {
+  padding-left: 1vw;
   text-decoration: none;
+  color: #9CAFC3;
+}
+
+main .search .browser .icon_browser input:focus ~ .suggestion .sug a img {
+  width: 90%;
+}
+
+main .search .browser .icon_browser input:focus ~ .suggestion .sug_none {
+  border-bottom: 1px solid #9CAFC3;
+  width: 80%;
+  position: relative;
+  left: 5%;
+  margin-bottom: 1%;
+  padding-bottom: 5%;
 }
 
 main .search .trending {
@@ -495,6 +583,19 @@ footer p {
     color: #572EE5;
     font-weight: bold;
     font-size: 13px;
+    text-transform: uppercase;
+  }
+  header .header_nav nav ul li a:hover {
+    padding-bottom: 5px;
+    border-bottom: solid #5ED7C6;
+    border-bottom-width: 3.1px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  header .header_nav nav ul li a:active {
+    color: #9CAFC3;
+    border-bottom: none;
   }
   header .header_nav nav ul .underline {
     display: none;
@@ -523,6 +624,35 @@ footer p {
   main .search .browser .icon_browser input::placeholder {
     color: #9CAFC3;
     left: 5%;
+  }
+  main .search .browser .icon_browser input:focus {
+    padding-left: 0.5%;
+    top: 0.3vh;
+  }
+  main .search .browser .icon_browser input:focus ~ a .lupa {
+    top: 2.3vh;
+  }
+  main .search .browser .icon_browser input:focus::-webkit-input-placeholder {
+    left: 0;
+    top: 0.3vh;
+  }
+  main .search .browser .icon_browser input:focus:-ms-input-placeholder {
+    left: 0;
+    top: 0.3vh;
+  }
+  main .search .browser .icon_browser input:focus::-ms-input-placeholder {
+    left: 0;
+    top: 0.3vh;
+  }
+  main .search .browser .icon_browser input:focus::placeholder {
+    left: 0;
+    top: 0.3vh;
+  }
+  main .search .browser .icon_browser input:focus ~ .close {
+    top: 3vh;
+  }
+  main .search .browser .icon_browser input:focus ~ .suggestion .sug_none {
+    padding-bottom: 3%;
   }
   main .search .trending {
     margin: unset;

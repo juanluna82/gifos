@@ -20,11 +20,12 @@
     <header>
         <div class="line"></div>
         <div class="header_nav">
-            <img src="assets/logo-mobile.svg" alt="" class="logo" id="logo">
+            <img src="assets/logo-mobile.svg" alt="LOGO" class="logo" id="logo">
+
 
             <nav>
                 <input type="checkbox" id="menu">
-                <label class="menu_h" for="menu"><i class="fas fa-bars"></i></label>
+                <label id = "burger" class="menu_h" for="menu"><i class="fas fa-bars"></i></label>
                 <label class="menu_x" for="menu"><i class="fas fa-times"></i></label>
 
                 <ul>
@@ -46,29 +47,33 @@
             <div class="browser">
                 <img class="people" src="assets/ilustra_header.svg" alt="">
                 <div class="icon_browser">
-                    
-                    <input type="text" name="Busca GIFOS y más" id="" placeholder="Busca GIFOS y más">
-                    <a href="#" target="_blank"></a><img class="lupa" src="assets/icon-search.svg" alt="#"></a>
+
+                    <input type="text" name="Busca GIFOS y más" id="inputSearch" placeholder="Busca GIFOS y más">
+                    <a href="#" target="_blank"><img class="lupa lupaSug" src="assets/icon-search.svg" alt="#"></a>
+                    <img class="close" id="close" src="assets/close.svg" alt="#">
                     <div class="suggestion">
+                        <div class="sug sug_none">
+
+                        </div>
                         <div class="sug sug1">
-                            <a href="#" target="_blank"><img src="assets/icon-search.svg" alt="#"></a>
+                            <a href="#" target="_blank"><img class = "lupaSug" src="assets/icon-search.svg" alt="#"></a>
                             <a href="#">Mascotas</a>
-                           
+
                         </div>
                         <div class="sug sug2">
-                            <a href="#" target="_blank"><img src="assets/icon-search.svg" alt="#"></a>
+                            <a href="#" target="_blank"><img class = "lupaSug" src="assets/icon-search.svg" alt="#"></a>
                             <a href="#">Mascotas</a>
-  
+
                         </div>
                         <div class="sug sug3">
-                            <a href="#" target="_blank"><img src="assets/icon-search.svg" alt="#"></a>
+                            <a href="#" target="_blank"><img class = "lupaSug" src="assets/icon-search.svg" alt="#"></a>
                             <a href="#">Mascotas</a>
 
                         </div>
                         <div class="sug sug4">
-                            <a href="#" target="_blank"><img src="assets/icon-search.svg" alt="#"></a>
+                            <a href="#" target="_blank"><img class = "lupaSug" src="assets/icon-search.svg" alt="#"></a>
                             <a href="#">Mascotas</a>
-                            
+
                         </div>
 
                     </div>
@@ -94,7 +99,7 @@
                     <div class="gifos_carrousel">
                         <div class="gifos">
                             <div class="icons_gifos">
-                                <a href="#" target="_blank"><img id="favourites" class="fav" src="assets/icon-fav.svg"
+                                <a href="" target="_blank"><img id="favourites" class="fav" src="assets/icon-fav.svg"
                                         alt="#"></a>
 
                                 <a href="#" target="_blank"><img id="down" class="down" src="assets/icon-download.svg"
