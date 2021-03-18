@@ -423,6 +423,86 @@ main .search .trending p {
   font-size: 14px;
 }
 
+main #results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main #results #titleSearch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main #results #titleSearch #lineTitle {
+  height: 1px;
+  background-color: #9CAFC3;
+  width: 29%;
+  margin-bottom: 10%;
+}
+
+main #results #titleSearch h2 {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 6%;
+}
+
+main #results .gifosGrid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20fr  20fr;
+      grid-template-columns: 20fr  20fr;
+  margin: 5%;
+}
+
+main #results .gifosGrid .gifos .icons_gifos {
+  display: none;
+}
+
+main #results .gifosGrid .gifos img {
+  margin: 5%;
+  width: 90%;
+  height: 90%;
+}
+
+main #results .gifosGrid .gifos .user {
+  display: none;
+}
+
+main #results input {
+  border: 1px solid #572EE5;
+  border-radius: 25px;
+  height: 50px;
+  width: 100px;
+  background-color: #FFFFFF;
+  font-weight: bold;
+  font-size: 13px;
+  color: #572EE5;
+  cursor: pointer;
+  margin: 2% 0 5%;
+}
+
 main .trending_gifos {
   background-color: #F3F5F8;
   padding: 15% 0 25%;
@@ -664,6 +744,92 @@ footer p {
   main .search .trending p {
     font-size: 16px;
     margin: 5% 0;
+  }
+  main #results #titleSearch {
+    margin-top: 7%;
+    width: 100%;
+  }
+  main #results #titleSearch #lineTitle {
+    margin-bottom: 5%;
+  }
+  main #results #titleSearch h2 {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: unset;
+  }
+  main #results .gifosGrid {
+    width: 90%;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+  }
+  main #results .gifosGrid .gifos {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    position: relative;
+    margin: auto;
+    width: 100%;
+  }
+  main #results .gifosGrid .gifos:hover {
+    background-color: #572EE5;
+    z-index: 3;
+    opacity: 0.7;
+  }
+  main #results .gifosGrid .gifos:hover .user {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 0 10% 10%;
+    color: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+    z-index: 2;
+  }
+  main #results .gifosGrid .gifos:hover .user h2 {
+    font-size: 15px;
+    padding-bottom: 10%;
+  }
+  main #results .gifosGrid .gifos:hover .user p {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  main #results .gifosGrid .gifos:hover .icons_gifos {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 2%;
+    width: 40%;
+    z-index: 4;
+  }
+  main #results .gifosGrid .gifos:hover .icons_gifos a {
+    padding: 3%;
+    z-index: 0;
+  }
+  main #results .gifosGrid .gifos:hover .gif {
+    opacity: 0.3;
+  }
+  main #results .gifosGrid .gifos .gif {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-column: 1/5;
+    grid-row: 0/3;
+    width: 100%;
+    max-width: unset;
+    height: 200px;
+    margin: unset;
+    z-index: -1;
+  }
+  main #results input {
+    width: 10%;
   }
   main .trending_gifos {
     padding: 5% 0 15%;

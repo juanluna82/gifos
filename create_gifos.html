@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto GIFOS</title>
 
-    <!-- <link rel="stylesheet" href="style/nocturno/nocturno.css"> -->
     <link rel="stylesheet" href="style/create_gifos/create_gifos.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -21,20 +20,21 @@
     <header>
         <div class="line"></div>
         <div class="header_nav">
-            <img src="assets/logo-mobile.svg" alt="" class="logo" id="logo">
+            <img src="assets/logo-mobile.svg" alt="LOGO" class="logo" id="logo">
+
 
             <nav>
                 <input type="checkbox" id="menu">
-                <label class="menu_h" for="menu"><i class="fas fa-bars"></i></label>
+                <label id = "burger" class="menu_h" for="menu"><i class="fas fa-bars"></i></label>
                 <label class="menu_x" for="menu"><i class="fas fa-times"></i></label>
 
                 <ul>
-                    <li><a href="#">Modo Nocturno</a></li>
+                    <li><a id="click_mn" href="#">Modo Nocturno</a></li>
                     <div class="underline"></div>
                     <li><a href="#">Favoritos</a></li>
                     <div class="underline"></div>
                     <li><a href="#">Mis GIFOS</a></li>
-                    <li><img src="assets/CTA-crear-gifo-active.svg" alt=""></a></li>
+                    <li><img id="create" src="assets/button-crear-gifo.svg" alt=""></a></li>
                 </ul>
             </nav>
         </div>

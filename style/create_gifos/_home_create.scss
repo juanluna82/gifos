@@ -41,8 +41,10 @@ header {
                 top: 25vw;
                 padding-top: 10vw;
                 opacity: 90%;
+                z-index: 3;
 
-                
+
+
                 li {
                     
                     list-style: none;
@@ -58,7 +60,6 @@ header {
                         color: $color-white;
                         text-decoration: none;
                         font-size: 15px;
-                        text-transform: uppercase;
                     }
                 }
 
