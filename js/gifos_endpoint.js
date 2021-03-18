@@ -3,9 +3,16 @@
 let results = document.getElementById("results");
 
 function gifoResult() {
-    fetch('https://api.giphy.com/v1/gifs/search?api_key=wBmQSDXkME1hKn80LC75kd2OSaeifuM4&q=mascotas&limit=50')
-        .then(response => response.json())
-        .then(json => {
+    async function newSearch (){
+        let url = `https://api.giphy.com/v1/gifs/search?api_key=wBmQSDXkME1hKn80LC75kd2OSaeifuM4&q=mascotas&limit=50`;
+        const resp = await fetch(url);
+        const jsonResults = await resp.json();
+        return jsonResults;
+        
+    }
+    
+    let info = newSearch();
+        info.then (json => {
             ///crear div titulo busqueda////
             let titleSearch = document.createElement("div");
             titleSearch.id = "titleSearch";
@@ -87,9 +94,6 @@ function gifoResult() {
                  pUser.innerHTML = json.data[i].title;
                  divUser.appendChild(pUser);
 
-
-
-
             }
 
             // boton VER MAS////
@@ -104,3 +108,5 @@ function gifoResult() {
 
 gifoResult();
 //results(burrito);
+
+
