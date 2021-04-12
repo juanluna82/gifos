@@ -59,6 +59,7 @@ input.addEventListener("search", () => {
     var d = document.getElementById("busqueda");
     var d_nested = document.getElementById("sug" + fla);
     d.removeChild(d_nested);
+   
   }
   indexS=0;
   /////

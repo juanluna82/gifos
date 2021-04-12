@@ -176,7 +176,7 @@ main {
                     border-width: 1px;
                     border-color: $color-principal;
                     font-family: $font-roboto;
-
+                    padding-left: 20px;
                     position: relative;
 
                     &::placeholder {
@@ -315,12 +315,15 @@ main {
                 background-color: $color-fifth;
                 width: 29%;
                 margin-bottom: 10%;
+
+                
             }
 
             h2 {
                 font-weight: bold;
                 font-size: 25px;
                 margin-bottom: 6%;
+                text-transform: uppercase;
             }
         }
 

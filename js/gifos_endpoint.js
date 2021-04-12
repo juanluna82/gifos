@@ -1,4 +1,4 @@
-                                        //////UTILITIES///////////////
+        //////UTILITIES///////////////
 
 const myApiKey = "wBmQSDXkME1hKn80LC75kd2OSaeifuM4";
 
@@ -17,43 +17,50 @@ let searchInput = document.getElementById('searchInput');
 let searchBtn = document.getElementById('lupaSug');
 let suggestion = document.getElementsByClassName('jsSug');
 let results = document.getElementById("results");
-let gifView = [];
-let searchString = "";
-////// KEYPRESS SUGERENCIAS Y BUSQUEDA DE GIFOS////////
+let searchString = "";// se carga el valor que se vaya tipeando en el input search.
+let indexS=0;
+let suggestDataIndex = ""; // se cargan en este¿a variable el array de las sugerencias desde la funcion searchSugg(); 
 
+
+////// KEYPRESS SUGERENCIAS Y BUSQUEDA DE GIFOS////////
 
 searchInput.addEventListener("keyup", (e) => {
     searchString = e.target.value;
+    console.log(searchString);
     // IF PRESS ENTER
-    gifoResult();
-    // me vacia el input ( y si busco previamente lo borre y busque la palabra nueva)
-    /*filteredGifView = gifView.filter(view => {
-        return gifoRes.includes(searchString) /*|| view.house.includes(searchString)
-       
-        })
-        console.log(filteredGifView);*/
-     
-        /// ELSE LLAMA A SUGGESTIONS
+    if (e.key === 'Enter') {
+        // TRAE LOS RESULTADOS DE LOS GIF BUSCADOS//
+        gifoResult();
+        // me vacia el input
+        document.getElementById('searchInput').value = "";
+        // me hace unfocus en el input
+        document.getElementById("searchInput").blur();
+        // me remueve el resultado anterior de GIF, titulo y ver mas
+        document.getElementById('gifosGrid').remove();
+        document.getElementById('titleSearch').remove();
+        document.getElementById('seeMore').remove();
+    }
+    
+   
+
+    else {/// ELSE LLAMA A SUGGESTIONS
         searchSugg(); 
+
+    }  
+
 });
 
+/// FUNCION SI APRIETA UNA SUGERENCIA
+let arraySugDiv = document.getElementsByClassName("sug");
+console.log(arraySugDiv);
 
-/////////// INPUT SEARCH////////
- function searchValue() {
-    let newSearch = myFetch(`https://api.giphy.com/v1/gifs/search?api_key=${myApiKey}&q=Mascotas&limit=50`);
-    
-    newSearch.then(json => {
-        console.log(json);
-        for (let i = 0; i < 1; i++) {
-        console.log(json.data);
-        results.innerHTML = gifoResult();
-        }
-        
-    })
+for (let index = 0; index < arraySugDiv.length; index++) {
+    const element = arraySugDiv[index];
+    /////////DEJE ACA PARA SEGUIR DESPUES. LOGICA ONCLICK en SUG 1 input.value del search se cambie por la variable que cree suggestDataIndex.
+}
 
-        // HAY QUE VER A PAGINA DE ERROR///
-        .catch(err => console.error(err));
-};
+
+
 
 
 
@@ -75,11 +82,12 @@ function gifoResult() {
 
         titleSearch.appendChild(lineTitle);
         titleSearch.appendChild(resultsTitle);
-        resultsTitle.innerHTML = "Mascotas";
+        resultsTitle.innerHTML = searchString;
         ///crear div grid con resultados////
         let gifosGrid = document.createElement("div");
         results.appendChild(gifosGrid);
         gifosGrid.setAttribute("class", "gifosGrid");
+        gifosGrid.setAttribute("id", "gifosGrid");
 
         ///buscar resultados y agregar al div grid////
         for (let i = 0; i < 12; i++) {
@@ -152,28 +160,29 @@ function gifoResult() {
         results.appendChild(verMas);
         verMas.setAttribute("type", "button");
         verMas.setAttribute("value", "VER MÁS");
+        verMas.setAttribute("id", "seeMore");
 
     })
         // HAY QUE VER A PAGINA DE ERROR///
         .catch(err => console.error(err));
+  
+        
 };
-
-//gifoResult();
-
 
 
 
 /////////// INPUT SUGERENCIAS////////
 
+
 function searchSugg() {
-    let searchS = myFetch(`https://api.giphy.com/v1/tags/related/${searchString}?api_key=${myApiKey}&term=`);
+    let searchS = myFetch(`https://api.giphy.com/v1/tags/related/${searchString}?api_key=${myApiKey}`);
     searchS.then(json => {
         console.log(json);
         for (let i = 0; i < 4; i++) {
             console.log(json.data[i].name);
-            suggestion[i].textContent = `${json.data[i].name}`;
+            suggestDataIndex =suggestion[i].textContent = `${json.data[i].name}`;
         }
-
+        console.log(suggestDataIndex);
     })
 
         .catch(err => console.error(err));

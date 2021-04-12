@@ -261,6 +261,7 @@ main .search .browser .icon_browser input {
   border-width: 1px;
   border-color: #572EE5;
   font-family: "Roboto", sans-serif;
+  padding-left: 20px;
   position: relative;
 }
 
@@ -466,6 +467,7 @@ main #results #titleSearch h2 {
   font-weight: bold;
   font-size: 25px;
   margin-bottom: 6%;
+  text-transform: uppercase;
 }
 
 main #results .gifosGrid {
@@ -693,18 +695,22 @@ footer p {
   main .search .browser .icon_browser input::-webkit-input-placeholder {
     color: #9CAFC3;
     left: 5%;
+    padding-left: 60px;
   }
   main .search .browser .icon_browser input:-ms-input-placeholder {
     color: #9CAFC3;
     left: 5%;
+    padding-left: 60px;
   }
   main .search .browser .icon_browser input::-ms-input-placeholder {
     color: #9CAFC3;
     left: 5%;
+    padding-left: 60px;
   }
   main .search .browser .icon_browser input::placeholder {
     color: #9CAFC3;
     left: 5%;
+    padding-left: 60px;
   }
   main .search .browser .icon_browser input:focus {
     padding-left: 0.5%;
@@ -731,6 +737,7 @@ footer p {
   }
   main .search .browser .icon_browser input:focus ~ .close {
     top: 3vh;
+    cursor: pointer;
   }
   main .search .browser .icon_browser input:focus ~ .suggestion .sug_none {
     padding-bottom: 3%;
