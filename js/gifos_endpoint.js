@@ -1,10 +1,10 @@
-        //////UTILITIES///////////////
+//////UTILITIES///////////////
 
 const myApiKey = "wBmQSDXkME1hKn80LC75kd2OSaeifuM4";
 
 /** funcion de fetch para cualquier URL */
 async function myFetch(url) {
-    let res= await fetch(url);
+    let res = await fetch(url);
     let json = await res.json();
     return json;
 }
@@ -14,12 +14,12 @@ async function myFetch(url) {
 /////////// INPUT SEARCH y SUGERENCIAS////////
 
 let searchInput = document.getElementById('searchInput');
-let searchBtn = document.getElementById('lupaSug');
+let suggDiv = document.getElementById('suggestion');
 let suggestion = document.getElementsByClassName('jsSug');
 let results = document.getElementById("results");
 let searchString = "";// se carga el valor que se vaya tipeando en el input search.
-let indexS=0;
-let suggestDataIndex = ""; // se cargan en este¿a variable el array de las sugerencias desde la funcion searchSugg(); 
+let indexS = 0;
+let suggestDataIndex = []; // se cargan en este¿a variable el array de las sugerencias desde la funcion searchSugg(); 
 
 
 ////// KEYPRESS SUGERENCIAS Y BUSQUEDA DE GIFOS////////
@@ -40,23 +40,33 @@ searchInput.addEventListener("keyup", (e) => {
         document.getElementById('titleSearch').remove();
         document.getElementById('seeMore').remove();
     }
-    
-   
+
+
 
     else {/// ELSE LLAMA A SUGGESTIONS
-        searchSugg(); 
+        searchSugg();
 
-    }  
+        /// FUNCION SI APRIETA UNA SUGERENCIA
+        for (let index = 0; index < suggestion.length; index++) {
+            
+            //suggestion[index].setAttribute("onClick", "select(this);");
+            document.querySelectorAll('.jsSug').forEach(el => {
+                el.addEventListener('click', function() {
+                  this.classList.add('active');
+                });
+              });
+            console.log(suggestion[index]);
+
+        }
+
+    }
 
 });
 
-/// FUNCION SI APRIETA UNA SUGERENCIA
-let arraySugDiv = document.getElementsByClassName("sug");
-console.log(arraySugDiv);
-
-for (let index = 0; index < arraySugDiv.length; index++) {
-    const element = arraySugDiv[index];
-    /////////DEJE ACA PARA SEGUIR DESPUES. LOGICA ONCLICK en SUG 1 input.value del search se cambie por la variable que cree suggestDataIndex.
+function select(element) {
+    let selectUserData = element.textContent;
+    console.log(selectUserData);
+    //searchInput.value = selectUserData;
 }
 
 
@@ -65,10 +75,10 @@ for (let index = 0; index < arraySugDiv.length; index++) {
 
 
 //****************************************************//////////////// RESULTADOS DE BUSQUEDA ///////////////////////////////////************************* */
-  
+
 function gifoResult() {
     let limit = 50;
-    
+
     let info = myFetch(`https://api.giphy.com/v1/gifs/search?api_key=${myApiKey}&q=${searchString}&limit=${limit}`);
     info.then(json => {
         ///crear div titulo busqueda////
@@ -165,8 +175,8 @@ function gifoResult() {
     })
         // HAY QUE VER A PAGINA DE ERROR///
         .catch(err => console.error(err));
-  
-        
+
+
 };
 
 
@@ -180,7 +190,7 @@ function searchSugg() {
         console.log(json);
         for (let i = 0; i < 4; i++) {
             console.log(json.data[i].name);
-            suggestDataIndex =suggestion[i].textContent = `${json.data[i].name}`;
+            suggestDataIndex = suggestion[i].textContent = `${json.data[i].name}`;
         }
         console.log(suggestDataIndex);
     })
@@ -206,7 +216,7 @@ function gifosTrendingLoad() {
     let limit = 6;
     let trend = myFetch(`https://api.giphy.com/v1/gifs/trending?api_key=wBmQSDXkME1hKn80LC75kd2OSaeifuM4&limit=${limit}`);
     trend.then(json => {
-        
+
         //CARGA DE GIF EN ARRAYS///
         for (let index = 1; index < json.data.length; index++) {
             arrayOfGifs.push(json.data[index].images.original.url)//url del gif .
@@ -233,20 +243,20 @@ gifosTrendingLoad();
 ////// BOTON RIGHT //////////////////
 
 function updateGifosTrending() {
-    
+
     for (let index = 1; index < numberOfImg; index++) {
 
         // CUANDO COMPLETA LA PRIMERA VUELTA Y VUELVE DEL GIFOS 0 //
-        if ((firstIF+index) >= (arrayOfGifs.length-1)) {
+        if ((firstIF + index) >= (arrayOfGifs.length - 1)) {
             if (firstIF > arrayOfGifs.length) {
                 firstIF = infiniteIF;
-                document.getElementById("gif" + index).setAttribute("src", arrayOfGifs[arrayOfGifs.length-2])
-                document.getElementById("h2" + index).textContent = arrayOfGifsUser[arrayOfGifs.length-2];
-                document.getElementById("p" + index).textContent = arrayOfGifsTitle[arrayOfGifs.length-2];
+                document.getElementById("gif" + index).setAttribute("src", arrayOfGifs[arrayOfGifs.length - 2])
+                document.getElementById("h2" + index).textContent = arrayOfGifsUser[arrayOfGifs.length - 2];
+                document.getElementById("p" + index).textContent = arrayOfGifsTitle[arrayOfGifs.length - 2];
                 console.error("index =" + index);
                 console.error("IF INFINITE RIGHT");
-                console.error("arrayOfGifs.length-2 SUMATORIA =" + (arrayOfGifs.length-2));
-            } 
+                console.error("arrayOfGifs.length-2 SUMATORIA =" + (arrayOfGifs.length - 2));
+            }
 
 
             else {
@@ -256,36 +266,36 @@ function updateGifosTrending() {
                 //console.error("first > array " + firstIF > arrayOfGifs.length);
                 console.error("index =" + index);
                 console.error("IF ELSE RIGHT  (firstIF+index) >= (arrayOfGifs.length-1) y firstIF <= arrayOfGifs.length ");
-                console.log("FirstIF =" +firstIF);
+                console.log("FirstIF =" + firstIF);
                 //console.log("array.lengt =" + arrayOfGifs.length);
                 console.error("index + firstIF - arrayOfGifs.length + 1 SUMATORIA =" + (index + firstIF - arrayOfGifs.length + 1));
                 //console.log(arrayOfGifsTitle[index + firstIF - arrayOfGifs.length + 1]);               
             }
-        } 
+        }
 
         else if (firstIF < -1) {
             document.getElementById("gif" + index).setAttribute("src", arrayOfGifs[arrayOfGifs.length + firstIF + index + 1]);
-           /* document.getElementById("h2" + index).textContent = arrayOfGifsUser[index + firstIF - arrayOfGifs.length + 1];
-            document.getElementById("p" + index).textContent = arrayOfGifsTitle[index + firstIF - arrayOfGifs.length + 1];*/
-            
+            /* document.getElementById("h2" + index).textContent = arrayOfGifsUser[index + firstIF - arrayOfGifs.length + 1];
+             document.getElementById("p" + index).textContent = arrayOfGifsTitle[index + firstIF - arrayOfGifs.length + 1];*/
+
             //console.error("first > array " + firstIF > arrayOfGifs.length);
             console.error("index =" + index);
             console.error("RIGHT MENOR < -1");
             console.error("arrayOfGifs.length + firstIF + index + 1 SUMATORIA =" + (arrayOfGifs.length + firstIF + index + 1));
-            console.log("FirstIF =" +firstIF);
+            console.log("FirstIF =" + firstIF);
             //console.log("array.lengt =" + arrayOfGifs.length);
             //console.log(arrayOfGifsTitle[arrayOfGifs.length + firstIF + index - 1]);  
         }
 
         //PRIMERA VUELTA DE TRENDING GIFOS//
         else {
-            
+
             document.getElementById("gif" + index).setAttribute("src", arrayOfGifs[index + firstIF + 1]);
             document.getElementById("h2" + index).textContent = arrayOfGifsUser[index + firstIF + 1];
             document.getElementById("p" + index).textContent = arrayOfGifsTitle[index + firstIF + 1];
-            
+
             //console.log("firstIF+index =" + (firstIF+index));
-           // console.log("arrayOfGifs.length-1 >=" + (arrayOfGifs.length - 1));
+            // console.log("arrayOfGifs.length-1 >=" + (arrayOfGifs.length - 1));
             console.error("index =" + index);
             console.error("RIGHT NORMAL PARA LA DERECHA");
             console.log("FirstIF =" + firstIF);
@@ -305,43 +315,43 @@ buttonNN.addEventListener('click', () => {
 ////// BOTON LEFT //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function updateGifosLeft() {
-    
+
     for (let index = 1; index < numberOfImg; index++) {
 
         // CUANDO COMPLETA LA PRIMERA VUELTA Y VUELVE DEL GIFOS 0 //
-        if ((firstIF+index) <= 0) {
+        if ((firstIF + index) <= 0) {
             if (firstIF > arrayOfGifs.length) {
                 firstIF = infiniteIF;
-                document.getElementById("gif" + index).setAttribute("src", arrayOfGifs[arrayOfGifs.length-2])
+                document.getElementById("gif" + index).setAttribute("src", arrayOfGifs[arrayOfGifs.length - 2])
                 /*document.getElementById("h2" + index).textContent = arrayOfGifsUser[arrayOfGifs.length-2];
                 document.getElementById("p" + index).textContent = arrayOfGifsTitle[arrayOfGifs.length-2];*/
                 //console.error("<= 0 " + (firstIF+index) <= 0);
                 //console.error("first > array " + firstIF > arrayOfGifs.length);
                 console.error("index =" + index);
                 console.error("LEFT IF INFINITE");
-                console.error("arrayOfGifs.length-2 SUMATORIA =" + (arrayOfGifs.length-2));
-                
+                console.error("arrayOfGifs.length-2 SUMATORIA =" + (arrayOfGifs.length - 2));
+
             } else {
                 document.getElementById("gif" + index).setAttribute("src", arrayOfGifs[arrayOfGifs.length + firstIF + index - 1]);
-               /* document.getElementById("h2" + index).textContent = arrayOfGifsUser[index + firstIF - arrayOfGifs.length + 1];
-                document.getElementById("p" + index).textContent = arrayOfGifsTitle[index + firstIF - arrayOfGifs.length + 1];*/
-                
+                /* document.getElementById("h2" + index).textContent = arrayOfGifsUser[index + firstIF - arrayOfGifs.length + 1];
+                 document.getElementById("p" + index).textContent = arrayOfGifsTitle[index + firstIF - arrayOfGifs.length + 1];*/
+
                 //console.error("first > array " + firstIF > arrayOfGifs.length);
                 console.error("index =" + index);
                 console.error("LEFT firstIF+index MAYOR 0 y firstIF > arrayOfGifs.length");
                 console.error("arrayOfGifs.length + firstIF + index - 1 SUMATORIA =" + (arrayOfGifs.length + firstIF + index - 1));
-                console.log("FirstIF =" +firstIF);
-               // console.log("array.lengt =" + arrayOfGifs.length);
+                console.log("FirstIF =" + firstIF);
+                // console.log("array.lengt =" + arrayOfGifs.length);
                 //console.log(arrayOfGifsTitle[arrayOfGifs.length + firstIF + index - 1]);               
             }
-        } 
+        }
         //PRIMERA VUELTA DE TRENDING GIFOS//
         else {
-           
+
             document.getElementById("gif" + index).setAttribute("src", arrayOfGifs[index + firstIF + 1]);
             /*document.getElementById("h2" + index).textContent = arrayOfGifsUser[index + firstIF - arrayOfGifs.length - 1];
             document.getElementById("p" + index).textContent = arrayOfGifsTitle[index + firstIF + 1];*/
-            
+
             //console.error("first > array " + firstIF > arrayOfGifs.length);
             //console.log("firstIF+index =" + (firstIF+index));
             //console.log("arrayOfGifs.length-1 >=" + (arrayOfGifs.length));
