@@ -185,6 +185,7 @@ clickNoc.addEventListener('click', () => {
                 console.log(close);
                 close.setAttribute("src", "assets/close-modo-noct.svg");
                 // INPUT LUPAS
+                document.getElementById("lupaSug").setAttribute("src", "assets/icon-search-modo-noct.svg");
                 let lupaSug = document.getElementsByClassName("lupaSug");
                 for (let index = 0; index < lupaSug.length; index++) {
                         lupaSug[index].setAttribute("src", "assets/icon-search-modo-noct.svg");

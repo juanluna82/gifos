@@ -46,32 +46,38 @@ searchInput.addEventListener("keyup", (e) => {
     else {/// ELSE LLAMA A SUGGESTIONS
         searchSugg();
 
-        /// FUNCION SI APRIETA UNA SUGERENCIA
-        for (let index = 0; index < suggestion.length; index++) {
-            
-            //suggestion[index].setAttribute("onClick", "select(this);");
-            document.querySelectorAll('.jsSug').forEach(el => {
-                el.addEventListener('click', function() {
-                  this.classList.add('active');
-                });
-              });
-            console.log(suggestion[index]);
+        /// FUNCION SI APRIETA UNA SUGERENCIA/////NO FUNCIONA
+        function selectSUggestion() {
+            for (let index = 0; index < suggestion.length; index++) {
+                
+                suggestion[index].setAttribute("onClick", "select(this);");
+                console.log(suggestion[index]);
 
+            }
         }
+        selectSUggestion();
 
     }
 
 });
 
+
+
 function select(element) {
     let selectUserData = element.textContent;
     console.log(selectUserData);
-    //searchInput.value = selectUserData;
+    searchInput.value = selectUserData;
 }
 
 
 
+///// APRIETO CLOSE y se borra lo del input
+/////NO FUNCIONA
 
+document.getElementById("close").addEventListener("click",() => {
+    searchInput.value.remove();
+    console.log("focus de click por favor")
+} ); 
 
 
 //****************************************************//////////////// RESULTADOS DE BUSQUEDA ///////////////////////////////////************************* */
