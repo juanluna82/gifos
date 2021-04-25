@@ -47,36 +47,39 @@
             <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span> </h1>
             <div class="browser">
                 <img class="people" src="assets/ilustra_header.svg" alt="">
-                <div class="icon_browser">
+                <div class="icon_browser" id="icon_browser">
 
-                    <input type="text" name="Busca GIFOS y más" id="searchInput" placeholder="Busca GIFOS y más">
-                    <a href="" target="_blank"><img class="lupa" id="lupaSug" src="assets/icon-search.svg" alt=""></a>
-                    <img class="close" id="close" src="assets/close.svg" alt="#">
-                    <div class="suggestion">
-                        <div class="sug sug_none">
+                    <div class="wrapper">
+                        <div class="search_input">
+                            <input type="text" name="Busca GIFOS y más" id="searchInput"
+                                placeholder="Busca GIFOS y más">
+                            <div class="autocomplet-box" id="suggestion">
+
+                                <li>
+                                    <img class="lupaSug" src="assets/icon-search.svg" alt="">
+                                    <a class="jsSug" href=""></a>
+                                </li>
+
+                                <li>
+                                    <img class="lupaSug" src="assets/icon-search.svg" alt="">
+                                    <a class="jsSug" href=""></a>
+                                </li>
+
+                                <li>
+                                    <img class="lupaSug" src="assets/icon-search.svg" alt="">
+                                    <a class="jsSug" href=""></a>
+                                </li>
+
+                                <li>
+                                    <img class="lupaSug" src="assets/icon-search.svg" alt="">
+                                    <a class="jsSug" href=""></a>
+                                </li>
+
+                            </div>
+
+                            <img class="lupa" id="lupaSug" src="assets/icon-search.svg" alt="">
+                            <img class="close" id="close" src="assets/close.svg" alt="">
                         </div>
-                        <div class="sug sug1" id="sugg1">
-                            <a href="#" target="_blank"><img class="lupaSug" src="assets/icon-search.svg" alt="#"></a>
-                            <a class="jsSug" href=""></a>
-
-                        </div>
-                        <div class="sug sug2" id="sugg2">
-                            <a href="#" target="_blank"><img class="lupaSug" src="assets/icon-search.svg" alt="#"></a>
-                            <a class="jsSug" href=""></a>
-
-                        </div>
-                        <div class="sug sug3"id="sugg3">
-                            <a href="" target="_blank"><img class="lupaSug" src="assets/icon-search.svg" alt="#"></a>
-                            <a class="jsSug" href=""></a>
-
-                        </div>
-                        <div class="sug sug4" id="sugg4">
-                            <a href="" target="_blank"><img class="lupaSug" id="lupaSug" src="assets/icon-search.svg"
-                                    alt="#"></a>
-                            <a class="jsSug" href=""></a>
-
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -113,10 +116,10 @@
                                         alt="#"></a>
 
                             </div>
-                            <img class="gif" id = "gif1"  src="https://picsum.photos/200/200" alt="">
-                            <div class="user" >
-                                <h2 id ="h21">User</h2>
-                                <p id ="p1">Titulo gifos</p>
+                            <img class="gif" id="gif1" src="https://picsum.photos/200/200" alt="">
+                            <div class="user">
+                                <h2 id="h21">User</h2>
+                                <p id="p1">Titulo gifos</p>
                             </div>
 
                         </div>
@@ -131,10 +134,10 @@
                                 <a href="#" target="_blank"><img id="max" class="max" src="assets/icon-max-normal.svg"
                                         alt="#"></a>
                             </div>
-                            <img class="gif" id = "gif2" src="https://picsum.photos/200/200" alt="">
+                            <img class="gif" id="gif2" src="https://picsum.photos/200/200" alt="">
                             <div class="user">
-                                <h2 id ="h22">User</h2>
-                                <p id ="p2">Titulo gifos</p>
+                                <h2 id="h22">User</h2>
+                                <p id="p2">Titulo gifos</p>
                             </div>
                         </div>
 
@@ -149,10 +152,10 @@
                                 <a href="#" target="_blank"><img id="max" class="max" src="assets/icon-max-normal.svg"
                                         alt="#"></a>
                             </div>
-                            <img class="gif" id = "gif3" src="" alt="">
+                            <img class="gif" id="gif3" src="" alt="">
                             <div class="user">
-                                <h2 id ="h23">User</h2>
-                                <p id ="p3">Titulo gifos</p>
+                                <h2 id="h23">User</h2>
+                                <p id="p3">Titulo gifos</p>
                             </div>
                         </div>
 
@@ -194,7 +197,8 @@
 
 
     <script src="js/script.js"></script>
-    <script src="js/gifos_endpoint.js"></script>
+    <script src="js/gifos_search.js"></script>
+    <script src="js/carrousel.js"></script>
 </body>
 
 </html>

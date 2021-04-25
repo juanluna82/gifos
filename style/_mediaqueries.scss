@@ -87,36 +87,8 @@
                     input {
                         &::placeholder {
                             color: $color-fifth;
-                            left: 5%;
-                            padding-left: 60px;
                         } 
                     }
-
-                    input:focus {
-                        padding-left: 0.5%;
-                        top: 0.3vh;
-                        ~  a .lupa {
-                            top: 2.3vh;
-                        }
-
-                        &::placeholder{
-                            left: 0;
-                            top: 0.3vh;
-                        }
-                        ~ .close {
-                            top: 3vh;
-                            cursor: pointer;
-                        }
-
-                        ~ .suggestion {
-
-                            .sug_none{
-                                padding-bottom: 3%;
-                            }
-                        }
-
-                    }
-
                 }
             }
 
@@ -243,8 +215,8 @@
         }
 
         input {
-            width: 10%;
-
+            width: 15%;
+            
         }
     }
 

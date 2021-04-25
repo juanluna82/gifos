@@ -116,6 +116,7 @@ header {
 
 }
 
+
 // MAIN /////////////////////////////////////////
 
 main {
@@ -139,10 +140,11 @@ main {
 
 
         //BROWSER /////////////////////////////////
+
         .browser{
             display: flex;
             flex-direction: column;
-            
+            width: 80%;
             align-items: center;
             margin: 2%;
             .people {
@@ -151,132 +153,120 @@ main {
                 
             }
 
-            .icon_browser {
-                width: 95%;
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+            .icon_browser{
+                width: 100%;
                 
-                .suggestion {
-                    display: none;
-                }
-
-                .close{
-                    display: none;
-                }
-
-                .lupa {
-                    position: absolute;
-                    top: 12px;
-                    right: 5%;
-                }
-
-                input {
-                    border-radius: 27px;
-                    width: 98%;
-                    height: 40px;
-                    border-width: 1px;
-                    border-color: $color-white;
-                    background-color: $color-nocturno1;
+                .wrapper {
                     position: relative;
-                    color: $color-white;
-
-                    &::placeholder {
-                        color: $color-terciary;
-                        font-size: 16px;
-                        font-family: $font-roboto;
-                        position: relative;
-                        left: 15%;
-                      }
-                    
-                }
-
-                input:focus {
-                    height: 30px;
-                    border: none;
-                    margin-top:7px;
-                    z-index: 1;
-                    width: 77%;
-                    
-                   
-
-                    &::placeholder {
-                        left: 2vw;
-                        height: 80%;
-                        color: $color-fifth;
-                    }
+                    //max-width: 450px;
+                    margin: 0 auto;
 
 
-                    ~  a .lupa {
-                            margin-top:2px;
-                            left: 4vw;
-                            right: unset;
-                            z-index: 1;
-                            opacity: 0.5;
-                            
-                    }
-
-                    ~ .close {
-                        display: block;
-                        position: absolute;
-                        margin-top:2px;
-                        top: 2vh;
-                        right: 5%;
-                        z-index: 1;
-                    }
-
-                    ~ .suggestion {
-
-                        border: 1px solid $color-white;
-                        border-radius: 27px;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: flex-start;
+                    .search_input {
                         width: 100%;
-                        position: absolute;
-                        top: 0;
-                        background-color: $color-nocturno1;
-                        z-index: 0;
+                        border-radius: 27px;
+                        border: solid 1px $color-white;
+    
+                        input {
+                            height: 55px;
+                            border: none;
+                            padding: 0 0 0 40px;
+                            font-size: 16px;
+                            border-radius: 27px;
+                            font-family: $font-roboto;
+                            width: 80%;
+                            border-color: $color-white;
+                            background-color: $color-nocturno1;
+                            color: $color-white;
+                           
 
-                        .sug{
-                            display: flex;
-                            justify-content: flex-start;
-                            align-items: center;
-                            padding: 1% 5%;
-                            height: 4vh;
-                            opacity: 0.5;
-                            
+                            &::placeholder{
+                                color: $color-terciary;
+                                font-size: 16px;
+                                font-family: $font-roboto;
+                                position: relative;
+                                left: 0;
+                            }
+                        }
+    
+                        .lupa {
+                            height: 55px;
+                            width: 20px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            text-align: center;
+                            padding-right: 15px;
+                        }
+    
+                        .close {
+                            display: none;
+                            height: 55px;
+                            width: 15px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            text-align: center;
+                            padding-right: 15px;
+                        }
+                        
+                        .autocomplet-box {
+                            max-height: 280px;
+                            overflow-y: auto;
+                            opacity: 0;
+                            pointer-events: 0;
 
-                            a {
-                                padding-left: 1vw;
-                                text-decoration: none;
-                                color: $color-fifth;
-                                img {
-                                    width: 90%;
+                            li {
+                                display: none;
+                                list-style: none;
+                                padding: 8px 12px;
+                                cursor: default;
+                                border-radius: 3px;
+                                opacity: 0.5;
+                                
+                                
+                                &:hover {
+                                    background-color: #d8c3c3;
+                                }
+
+                                a {
+                                    padding-left: 10px;
+                                    color: $color-fifth;
+                                    text-decoration: none;
+                                }
+
+                                .lupaSug {
+                                    color: $color-fifth;
                                 }
                             }
                         }
+                    }
+                    .search_input {
+                        &.active {
+                            input{
+                                background:linear-gradient($color-fifth,$color-fifth) bottom no-repeat;
+                                background-size:100% 1px;
+                                
+                            }
+                            .autocomplet-box{
+                                padding: 10px 8px;
+                                opacity: 1;
+                                pointer-events: auto;
 
-                        .sug_none {
-                            border-bottom: 1px solid $color-fifth;
-                            width: 80%;
-                            position: relative;
-                            left: 5%;
-                            margin-bottom: 1%;
-                            padding-bottom: 5%;
-                            
-                            
+                                li{
+                                    display: flex;
+                                    align-items: center;
+                                }
+                                
+                            }
                         }
-
                     }
                 }
 
-
             }
+
         }
+
 
         //TRENDING //////////////////////////////////
         .trending {
@@ -359,16 +349,21 @@ main {
             }
     
             input {
-                border: 1px solid $color-principal;
+                border: 1px solid $color-white;
                 border-radius: 25px;
                 height: 50px;
                 width: 100px;
-                background-color: $color-white;
+                background-color: $color-nocturno1;
                 font-weight: bold;
                 font-size: 13px;
-                color:$color-principal;
+                color:$color-white;
                 cursor: pointer;
                 margin: 2% 0 5%;
+
+                &:hover {
+                    background-color: $color-white;
+                    color: $color-nocturno1;
+                }
                 
             }
     
