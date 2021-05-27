@@ -1,3 +1,5 @@
+let cantGifs = 0;
+let vermas = 1;
 //////UTILITIES///////////////
 
 const myApiKey = "wBmQSDXkME1hKn80LC75kd2OSaeifuM4";
@@ -87,19 +89,19 @@ function select(element) {
     console.log(selectUserData);
     searchInput.value = selectUserData;
     gifoResult(selectUserData);
-            // reemplaza close con lupa
-            document.querySelector(".close").style.display = "none";
-            document.querySelector(".lupa").style.display = "block";
-            //me remueve la visualizacion de la lista de preferencias
-            searchWrapper.classList.remove("active");
-            // me vacia el input
-            inputBox.value = "";
-            // me hace unfocus en el input
-            document.getElementById("searchInput").blur();
-            // me remueve el resultado anterior de GIF, titulo y ver mas
-            document.getElementById('gifosGrid').remove();
-            document.getElementById('titleSearch').remove();
-            document.getElementById('seeMore').remove();
+    // reemplaza close con lupa
+    document.querySelector(".close").style.display = "none";
+    document.querySelector(".lupa").style.display = "block";
+    //me remueve la visualizacion de la lista de preferencias
+    searchWrapper.classList.remove("active");
+    // me vacia el input
+    inputBox.value = "";
+    // me hace unfocus en el input
+    document.getElementById("searchInput").blur();
+    // me remueve el resultado anterior de GIF, titulo y ver mas
+    document.getElementById('gifosGrid').remove();
+    document.getElementById('titleSearch').remove();
+    document.getElementById('seeMore').remove();
 }
 
 
@@ -112,6 +114,7 @@ function gifoResult(searchString) {
 
     let info = myFetch(`https://api.giphy.com/v1/gifs/search?api_key=${myApiKey}&q=${searchString}&limit=${limit}`);
     info.then(json => {
+        cantGifs = json.data.length;
         ///crear div titulo busqueda////
         let titleSearch = document.createElement("div");
         titleSearch.id = "titleSearch";
@@ -131,9 +134,8 @@ function gifoResult(searchString) {
         gifosGrid.setAttribute("id", "gifosGrid");
 
         ///buscar resultados y agregar al div grid////
-        for (let i = 0; i < 12; i++) {
-
-            console.log(json.data[i].images.fixed_width.url);
+        for (let i = 0; i < 50; i++) {
+            let urlSearch = json.data[i].images.fixed_width.url;
 
             // crear div con el overlay con iconos en cada gifos////
             //div general
@@ -170,12 +172,71 @@ function gifoResult(searchString) {
             max.setAttribute("id", "maxS");
             max.setAttribute("src", "assets/icon-max-normal.svg");
 
+            // HOVER DOWNLOAD RESULTS JS
+            let itemResults = document.getElementsByClassName("down");
 
-            // TRAE GIFOS DE LA API////
+                itemResults[i].addEventListener('mouseover', () => {
+                    itemResults[i].setAttribute("src", "assets/icon-download-hover.svg");
+                });
+                itemResults[i].addEventListener('mouseout', () => {
+                    itemResults[i].setAttribute("src", "assets/icon-download.svg");
+                });
+
+
+            // FAVOURITES
+                let fav = document.getElementsByClassName("fav");
+                function mouseOverFav() {
+                    fav[i].setAttribute("src", "assets/icon-fav-hover.svg");
+                }
+    
+                fav[i].addEventListener('mouseover', mouseOverFav);
+    
+                function mouseOut() {
+                    fav[i].setAttribute("src", "assets/icon-fav.svg");
+                }
+    
+                fav[i].addEventListener('mouseout', mouseOut);
+    
+    
+                //ACTIVE FAV 
+                let press = 1;
+                fav[i].addEventListener('click', () => {
+                    if (press == 1) {
+                        fav[i].setAttribute("src", "assets/icon-fav-active.svg");
+                        fav[i].removeEventListener("mouseout", mouseOut);
+                        fav[i].removeEventListener("mouseover", mouseOverFav);
+                        press++
+    
+                    } else {
+                        fav[i].setAttribute("src", "assets/icon-fav.svg");
+                        fav[i].addEventListener("mouseout", mouseOut);
+                        fav[i].addEventListener("mouseover", mouseOverFav);
+                        press = 1;
+                    }
+                    let encontrado = sessionStorage.getItem(`fav${i}`);
+                    console.log(encontrado);
+                    if (encontrado === null) {
+                        sessionStorage.setItem(`fav${i}`, urlSearch);
+                    } else {
+                        sessionStorage.removeItem(`fav${i}`);
+                    }
+                });
+
+
+
+            // MAXIMIZE
+            let maxR = document.getElementsByClassName("max");
+                maxR[i].addEventListener('mouseover', () => {
+                    maxR[i].setAttribute("src", "assets/icon-max-hover.svg");
+                });
+                maxR[i].addEventListener('mouseout', () => {
+                    maxR[i].setAttribute("src", "assets/icon-max-normal.svg");
+                });
+
+            //////////// TRAE GIFOS DE LA API//////////////////
             let gifo = document.createElement("img");
             gifo.setAttribute("src", json.data[i].images.fixed_width.url);
             gifo.setAttribute("class", "gif");
-
             divGifos.appendChild(gifo);
 
 
@@ -202,13 +263,54 @@ function gifoResult(searchString) {
         verMas.setAttribute("type", "button");
         verMas.setAttribute("value", "VER MÁS");
         verMas.setAttribute("id", "seeMore");
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+document.getElementById("seeMore").addEventListener("click", function () {
+    console.log(cantGifs);
+    let pags = Math.trunc(cantGifs / 12);
+    let bloque = 12;
+    let limits = bloque + bloque * vermas;
+    if (vermas < pags) {
+      console.log(pags);
+      for (let index = bloque * vermas; index < limits; index++) {
+        console.log(index);
+        const element = document.getElementById(index);
+        element.style = "display:block";
+        document.getElementById("seeMore").style = "display:block";
+      }
+      vermas++;
+      console.log(vermas);
+    } else {
+      for (let index = bloque * vermas; index < cantGifs; index++) {
+        const element = document.getElementById(index);
+        element.style = "display:block";
+      }
+      vermas = 1;
+      document.getElementById("seeMore").style = "display:none";
+    }
+  });
+//////////////////////////////////////////////////////////////////////////        
     })
+    
         // HAY QUE VER A PAGINA DE ERROR///
-        .catch(err => console.error(err));
+        .catch(() => {
+            let errorSearch = document.createElement("div");
+            errorSearch.id = "errorSearch";
+            results.appendChild(errorSearch);
+
+            let errorImg = document.createElement("img");
+            errorImg.setAttribute("src", "assets/icon-busqueda-sin-resultado.svg")
+            let errorP = document.createElement("p");
+            errorP.innerHTML = "Intenta con otra búsqueda.";
+            errorSearch.appendChild(errorImg);
+            errorSearch.appendChild(errorP);
+
+        });
 
 
 };
+
 
 
 /////////// INPUT SUGERENCIAS////////

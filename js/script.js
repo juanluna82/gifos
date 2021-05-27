@@ -4,26 +4,47 @@
 
 // HOVER de iconos GIFOS/////////////////////////////////
 // FAVOURITES
-let fav = document.getElementsByClassName("fav");
+
+/*let fav = document.getElementsByClassName("fav");
 for (let index = 0; index < fav.length; index++) {
-
-        fav[index].addEventListener('mouseover', () => {
+        function mouseOverFav() {
                 fav[index].setAttribute("src", "assets/icon-fav-hover.svg");
-                
-        });
-        fav[index].addEventListener('mouseout', () => {
-                fav[index].setAttribute("src", "assets/icon-fav.svg");
-                
-        });
-        
-        console.log(fav);
-        //ACTIVE FAV REVISAR /&/&/&!/&"/!&"/!&/&!/&!"&!"????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
-     /*   fav[index].addEventListener('click', () => {
-                fav[index].setAttribute("src", "assets/icon-fav-active.svg");
-                console.log(fav);
-        })*/
+        }
 
-};
+        fav[index].addEventListener('mouseover', mouseOverFav);
+
+        function mouseOut() {
+                fav[index].setAttribute("src", "assets/icon-fav.svg");
+        }
+
+        fav[index].addEventListener('mouseout', mouseOut);
+
+
+        //ACTIVE FAV 
+        let press = 1;
+        fav[index].addEventListener('click', () => {
+                console.log(press);
+                if (press == 1) {
+                        fav[index].setAttribute("src", "assets/icon-fav-active.svg");
+                        fav[index].removeEventListener("mouseout", mouseOut);
+                        fav[index].removeEventListener("mouseover", mouseOverFav);
+                        press++
+                        console.log(press);
+                } else {
+                        console.log("entro en el else");
+                        fav[index].setAttribute("src", "assets/icon-fav.svg");
+                        fav[index].addEventListener("mouseout", mouseOut);
+                        fav[index].addEventListener("mouseover", mouseOverFav);
+                        press = 1;
+                }       
+
+        });
+
+
+}
+
+*/
+
 
 // DOWNLOAD
 let items = document.getElementsByClassName("down");
@@ -35,6 +56,7 @@ for (let index = 0; index < items.length; index++) {
                 items[index].setAttribute("src", "assets/icon-download.svg");
         });
 };
+
 
 // MAXIMIZE
 let max = document.getElementsByClassName("max");

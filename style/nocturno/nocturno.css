@@ -780,9 +780,9 @@ footer p {
     opacity: 0.3;
   }
   main .trending_gifos .preview_gifos .slider_gifos .gifos_carrousel .gifos .gif {
-    width: unset;
+    width: 100%;
     max-width: unset;
-    height: 300px;
+    height: 25vw;
     z-index: -1;
   }
   footer {

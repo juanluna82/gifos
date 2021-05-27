@@ -212,7 +212,7 @@ main .create .container_square .container {
   height: 50vh;
 }
 
-main .create .container_square .container .subcontainer {
+main .create .container_square .container #subcontainer {
   height: 50vh;
   background: linear-gradient(to right, #50E3C2 1px, transparent 1px) 0 0, linear-gradient(to right, #50E3C2 1px, transparent 1px) 0 100%, linear-gradient(to left, #50E3C2 1px, transparent 1px) 100% 0, linear-gradient(to left, #50E3C2 1px, transparent 1px) 100% 100%, linear-gradient(to bottom, #50E3C2 1px, transparent 1px) 0 0, linear-gradient(to bottom, #50E3C2 1px, transparent 1px) 100% 0, linear-gradient(to top, #50E3C2 1px, transparent 1px) 0 100%, linear-gradient(to top, #50E3C2 1px, transparent 1px) 100% 100%;
   background-repeat: no-repeat;
@@ -232,7 +232,7 @@ main .create .container_square .container .subcontainer {
           align-items: center;
 }
 
-main .create .container_square .container .subcontainer h1 {
+main .create .container_square .container #subcontainer h2 {
   margin: 0px;
   padding: 20px 0;
   font-weight: bold;
@@ -241,11 +241,11 @@ main .create .container_square .container .subcontainer h1 {
   font-weight: bold;
 }
 
-main .create .container_square .container .subcontainer h1 span {
+main .create .container_square .container #subcontainer h2 span {
   color: #50E3C2;
 }
 
-main .create .container_square .container .subcontainer p {
+main .create .container_square .container #subcontainer p {
   margin: 0px;
   padding: 20px 0;
   text-align: center;
@@ -254,11 +254,107 @@ main .create .container_square .container .subcontainer p {
   color: #000000;
 }
 
+main .create .container_square .container #subcontainer video {
+  display: none;
+}
+
+main .create .container_square .container #subcontainer .preview {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+main .create .container_square .container #subcontainer .preview #gif {
+  width: 350px;
+  height: auto;
+}
+
+main .create .container_square .container #subcontainer .preview .overlay {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+  background: rgba(87, 46, 229, 0.6);
+  /* Black see-through */
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+main .create .container_square .container #subcontainer .preview .overlay .estado {
+  display: block;
+  color: white;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+}
+
+main .create .container_square .container #subcontainer .preview .overlay .icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+main .create .container_square .container #subcontainer .preview .overlay .icon #copy {
+  opacity: 0.7;
+}
+
+main .create .container_square .container #subcontainer .preview .overlay .icon #download {
+  opacity: 0.7;
+}
+
+main .create .container_square .container #subcontainer .preview .overlay .icon #copy:hover {
+  opacity: 1;
+}
+
+main .create .container_square .container #subcontainer .preview .overlay .icon #download:hover {
+  opacity: 1;
+}
+
 main .numbers {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 20fr 60fr 20fr;
       grid-template-columns: 20fr 60fr 20fr;
+  position: relative;
+}
+
+main .numbers #clock {
+  display: none;
+  position: absolute;
+  right: 25vw;
+  top: 35px;
+  font-weight: bold;
+}
+
+main .numbers #repeat {
+  display: none;
+  position: absolute;
+  right: 25vw;
+  top: 35px;
+  font-weight: bold;
+  font-size: 13px;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+main .numbers #repeat:hover {
+  border-bottom: 3px solid #50E3C2;
 }
 
 main .numbers .steps {

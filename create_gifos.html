@@ -25,7 +25,7 @@
 
             <nav>
                 <input type="checkbox" id="menu">
-                <label id = "burger" class="menu_h" for="menu"><i class="fas fa-bars"></i></label>
+                <label id="burger" class="menu_h" for="menu"><i class="fas fa-bars"></i></label>
                 <label class="menu_x" for="menu"><i class="fas fa-times"></i></label>
 
                 <ul>
@@ -49,11 +49,27 @@
             </div>
             <div class="container_square">
                 <div class="container">
-                    <div class="subcontainer">
-                        <h1>Aquí podrás <br> crear tus propios <span>GIFOS</span> </h1>
-                        <p>Crea tu GIFO en sólo 3 pasos! <br> (sólo necesitas una cámara para grabar un video)</p>
+                    <div id="subcontainer">
+                        <h2 id="title">Aquí podrás <br> crear tus propios <span>GIFOS</span> </h2>
+                        <p id="text">Crea tu GIFO en sólo 3 pasos! <br> (sólo necesitas una cámara para grabar un video)
+                        </p>
+                        <video id="video" src=""></video>
+                        <div class="preview">
+                            <img style="display: none;" id="previewGif" src="" alt="">
+                            <div id="overlay" class="overlay">
+                                <div style="display: none;" id="icon" class="icon">
+                                    <a id="download" style="cursor:pointer" download="tuGifo.gif" href=""
+                                        target="_blank"> <img src="../assets/icon-download.svg" alt=""> </a>
+                                    <a id="copy" style="cursor:pointer"><img src="../assets/icon-link-normal.svg"
+                                            alt=""> </a>
+                                </div>
+                                <div id="estado" class="estado" style="display: none;">
+                                    <img id="load" src="../assets/loader.svg" alt="">
+                                    <p id="texto">Estamos subiendo tu Gifo</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-    
                 </div>
             </div>
 
@@ -63,21 +79,28 @@
         <div class="step_numbers">
             <div class="numbers">
                 <div class="steps">
-                    <img src="assets/paso-a-paso.svg" alt="1">
-                    <img src="assets/paso-a-paso-2.svg" alt="2">
-                    <img src="assets/paso-a-paso-3.svg" alt="2">
+                    <img id="one" src="assets/paso-a-paso.svg" alt="1">
+                    <img id="two" src="assets/paso-a-paso-2.svg" alt="2">
+                    <img id="three" src="assets/paso-a-paso-3.svg" alt="2">
                 </div>
+                <div id="clock">
+                    <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>
+                </div>
+                <div id="repeat"> REPETIR CAPTURA</div>
                 <img class="pelicula" src="assets/pelicula.svg" alt="">
             </div>
-            
+
         </div>
 
         <div class="line_create">
             <div class="line_container"></div>
         </div>
         <div class="btn_container">
-            <button>COMENZAR</button>
+            <button id="start" class="btnStart">COMENZAR</button>
         </div>
+
+
+
     </main>
 
     <footer>
@@ -97,9 +120,9 @@
     </footer>
     <div class="line"></div>
 
-
-
-    <script src="js/script.js"></script>
+    <!--<script src="js/script.js"></script> -->
+    <script src="https://www.webrtc-experiment.com/RecordRTC.js"></script>
+    <script src="js/video_gifos.js"></script>
 </body>
 
 </html>
