@@ -10,7 +10,7 @@ const numberOfImg = 4;
 
 function gifosTrendingLoad() {
     let limit = 13;
-    let trend = myFetch(`https://api.giphy.com/v1/gifs/trending?api_key=wBmQSDXkME1hKn80LC75kd2OSaeifuM4&limit=${limit}`);
+    let trend = pintarGifsConAsyncAwait(`https://api.giphy.com/v1/gifs/trending?api_key=wBmQSDXkME1hKn80LC75kd2OSaeifuM4&limit=${limit}`);
     trend.then(json => {
 
         //CARGA DE GIF EN ARRAYS/////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +38,7 @@ gifosTrendingLoad();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// VER TEMA DE QUE QUEDEN SELECCIONADOS LOS CORAZONES CUANDO SELECCIONO UN GIF////
 
 /// HOVER, ACTIVE Y STORAGE DE GIF TRENDINGS
+
 
 // HOVER
 function hoverFav() {

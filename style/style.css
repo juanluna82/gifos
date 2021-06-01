@@ -76,6 +76,10 @@ body *, body *:focus, body *:hover {
   outline: none;
 }
 
+.activeFav {
+  background-color: white;
+}
+
 header .line {
   height: 5px;
   background-color: #572EE5;
