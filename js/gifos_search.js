@@ -3,7 +3,7 @@
 const myApiKey = "wBmQSDXkME1hKn80LC75kd2OSaeifuM4";
 
 /** funcion de fetch para cualquier URL */
-async function pintarGifsConAsyncAwait(url) {
+async function myFetch(url) {
     let res = await fetch(url);
     let json = await res.json();
     return json;
@@ -25,7 +25,7 @@ let lineTitle = document.getElementById("lineTitle");
 let searchString = "";// se carga el valor que se vaya tipeando en el input search.
 let indexS = 0;
 let suggestDataIndex = []; // se cargan en este¿a variable el array de las sugerencias desde la funcion searchSugg(); 
-
+let encontrado = [];
 let searchWrapper = document.querySelector(".search_input");
 let inputBox = searchWrapper.querySelector("input");
 
@@ -61,9 +61,13 @@ searchInput.addEventListener("keyup", (e) => {
         inputBox.value = "";
         // me hace unfocus en el input
         document.getElementById("searchInput").blur();
-        console.log(gifosGrid.innerHTML);
         // me remueve el resultado anterior de GIF, titulo y ver mas
-        gifosGrid.innerHTML ="";
+        gifosGrid.innerHTML = "";
+        // Muestra titulo y Ver mas
+        document.querySelector("#titleSearch").style.display = "flex";
+        document.querySelector("#seeMore").style.display = "block";
+
+
     }
 
 
@@ -104,14 +108,17 @@ function select(element) {
     document.getElementById("searchInput").blur();
     // me remueve el resultado anterior de GIF, titulo y ver mas
     resultsTitle.innerHTML = selectUserData;
-    gifosGrid.innerHTML ="";
+    gifosGrid.innerHTML = "";
+    // Muestra titulo y Ver mas
+    document.querySelector("#titleSearch").style.display = "flex";
+    document.querySelector("#seeMore").style.display = "block";
 }
 
 /////////// INPUT SUGERENCIAS////////
 
 
 function searchSugg() {
-    let searchS = pintarGifsConAsyncAwait(`https://api.giphy.com/v1/tags/related/${searchString}?api_key=${myApiKey}`);
+    let searchS = myFetch(`https://api.giphy.com/v1/tags/related/${searchString}?api_key=${myApiKey}`);
     searchS.then(json => {
         for (let i = 0; i < 4; i++) {
             suggestDataIndex = suggestion[i].textContent = `${json.data[i].name}`;
@@ -126,19 +133,19 @@ function searchSugg() {
 
 let offset = 0;
 let limit = 12;
-let favId = 0;
+
 function gifoResult(searchString) {
 
-    let info = pintarGifsConAsyncAwait(`https://api.giphy.com/v1/gifs/search?api_key=${myApiKey}&q=${searchString}&limit=${limit}&offset=${offset}`);
+    let info = myFetch(`https://api.giphy.com/v1/gifs/search?api_key=${myApiKey}&q=${searchString}&limit=${limit}&offset=${offset}`);
 
     info.then(json => {
         ///buscar resultados y agregar al div grid////
-        for (let i = favId; i < json.data.length; i++) {
+        for (let i = 0; i < json.data.length; i++) {
             let urlSearch = json.data[i].images.fixed_width.url;
-            console.log("FAV ID = " + favId);
+            let urlId = json.data[i].id;
             // crear div con el overlay con iconos en cada gifos////
             //div general
-             let divGifos = document.createElement("div");
+            let divGifos = document.createElement("div");
             gifosGrid.appendChild(divGifos);
             divGifos.setAttribute("class", "gifos");
             //div contenedor de iconos
@@ -152,7 +159,6 @@ function gifoResult(searchString) {
             let favourites = document.createElement("img");
             aFavourites.appendChild(favourites);
             favourites.setAttribute("class", "favSearch");
-            favourites.setAttribute("id", "favouritesS" + i);
             favourites.setAttribute("src", "assets/icon-fav.svg");
             hoverSearch(favourites, "assets/icon-fav-hover.svg", "assets/icon-fav.svg");
 
@@ -161,9 +167,9 @@ function gifoResult(searchString) {
             iconsGifos.appendChild(aDownload);
             let download = document.createElement("img");
             aDownload.appendChild(download);
-            download.setAttribute("class", "down");
-            download.setAttribute("id", "downS");
+            download.setAttribute("class", "downS");
             download.setAttribute("src", "assets/icon-download.svg");
+            hoverSearch(download, "assets/icon-download-hover.svg", "assets/icon-download.svg");
             //icono maximize//
             let aMax = document.createElement("a");
             iconsGifos.appendChild(aMax);
@@ -172,22 +178,26 @@ function gifoResult(searchString) {
             max.setAttribute("class", "max");
             max.setAttribute("id", "maxS");
             max.setAttribute("src", "assets/icon-max-normal.svg");
+            hoverSearch(max, "assets/icon-max-hover.svg", "assets/icon-max-normal.svg");
+
 
             ///// CLICK en ICONO FAVORITO
             favourites.addEventListener("click", () => {
+
                 console.log(favourites);
-                let encontrado = sessionStorage.getItem(`favSearch${i}`);
+                let encontrado = sessionStorage.getItem(`${urlId}`);
                 console.log("buscamos = " + encontrado);
-                console.log(sessionStorage.getItem(`favSearch${i}`));
+                console.log(sessionStorage.getItem(`${urlId}`));
                 if (encontrado === null) {
-                    console.log(` agrega favSearch${i}`);
+                    console.log(` agrega ${urlId}`);
                     console.log(urlSearch);
-                    sessionStorage.setItem(`favSearch${i}`, urlSearch);
+                    sessionStorage.setItem(`${urlId}`, `{"url": "${urlSearch}", "user": "${userGif}", "title": "${titleGif}"}`);
+                    //sessionStorage.setItem(`${urlId}`, urlSearch);
                     favourites.setAttribute("src", "assets/icon-fav-active.svg")
                     hoverSearch(favourites, "assets/icon-fav-active.svg", "assets/icon-fav-active.svg");
                 } else {
                     console.log("borro de favoritos");
-                    sessionStorage.removeItem(`favSearch${i}`);
+                    sessionStorage.removeItem(`${urlId}`);
                     favourites.setAttribute("src", "assets/icon-fav.svg")
                     hoverSearch(favourites, "assets/icon-fav-hover.svg", "assets/icon-fav.svg");
                 }
@@ -210,25 +220,16 @@ function gifoResult(searchString) {
             // h2 user///
             let user = document.createElement("h2");
             user.innerHTML = json.data[i].username;
+            let userGif = json.data[i].username;
             divUser.appendChild(user);
             // p user///
             let pUser = document.createElement("p");
             pUser.innerHTML = json.data[i].title;
+            let titleGif = json.data[i].title;
             divUser.appendChild(pUser);
 
         }
-        
 
-
-
-        /*
-                // boton VER MAS////
-                let verMas = document.createElement("input");
-                results.appendChild(verMas);
-                verMas.setAttribute("type", "button");
-                verMas.setAttribute("value", "VER MÁS");
-                verMas.setAttribute("id", "seeMore");
-         */
     })
 
         // HAY QUE VER A PAGINA DE ERROR///
@@ -257,7 +258,8 @@ function gifoResult(searchString) {
 
 function hoverSearch(x, urlOver, urlOut) {
     /// HOVER FAV de TRENDING
-    console.log("estoyaqui");
+
+
     function mouseOver() {
         x.setAttribute("src", urlOver);
     }
@@ -272,22 +274,13 @@ function hoverSearch(x, urlOver, urlOut) {
 
 console.log(vermas);
 
-vermas.addEventListener("click", ()=> {
+vermas.addEventListener("click", () => {
     console.log("click ver mas")
-    offset +=12;
-    console.log(favId);
+    offset += 12;
     gifoResult(searchString);
 })
 
-function clearBoxId(elementID)
-{
-    document.getElementById(elementID).innerHTML = "";
-}
-
-function clearBoxClass(elementClass)
-{
-    document.getElementsByClassName(elementClass).innerHTML = "";
-}
 
 
 
+console.log("encontrado json = " + encontrado);
