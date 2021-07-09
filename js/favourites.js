@@ -1,23 +1,21 @@
-let linkFav = document.getElementById("linkFav");
+
+let favDiv = document.getElementById("favDiv");
 let searchDiv = document.getElementsByClassName("search")[0];
 let newRetrievedObject = [];
 let blockFavClick = 0;
 
-linkFav.addEventListener("click", clickFav);
-
 
 
 function clickFav() {
-
-    results.style.display = "none";
+    
     searchDiv.style.display = "none";
     while (blockFavClick == 0) {
 
-        let urlId =[];
+        let urlId = [];
 
         //// Rescata los gif del session storage
         for (let i = 0; i < sessionStorage.length; i++) {
-            let key = sessionStorage.key(i+1);
+            let key = sessionStorage.key(i + 1);
             keyUrl = sessionStorage.key(i);
             retrievedObject = JSON.parse(sessionStorage.getItem(key));
             newRetrievedObject.push(retrievedObject);
@@ -27,14 +25,6 @@ function clickFav() {
 
         console.log("prueba", newRetrievedObject.length);
 
-
-        if (newRetrievedObject.length < 2) {
-            
-            console.log("FAVORITOS SIN RESULTADOS");
-            break;
-        } else {
-
-            //// Muestra los gif en Mis favoritos
             /// logo y titulo
 
             let favDiv = document.createElement("div")
@@ -55,6 +45,29 @@ function clickFav() {
             FavTitle.innerHTML = "Favoritos";
             FavTitle.setAttribute("class", "FavTitle");
 
+        if (newRetrievedObject.length < 2) {
+            
+            // FAVORITOS SIN RESLTADOS
+            let nonFav = document.createElement("div");
+            favDiv.appendChild(nonFav);
+            nonFav.setAttribute("class", "nonFav");
+
+            let FavImg = document.createElement("img")
+            nonFav.appendChild(FavImg);
+            FavImg.setAttribute("src", "assets/icon-fav-sin-contenido.svg");
+            FavImg.setAttribute("class", "FavImg");
+
+            let FavTitle = document.createElement("h2")
+            nonFav.appendChild(FavTitle);
+            FavTitle.innerHTML = '"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"';
+            FavTitle.setAttribute("class", "FavTitle");
+
+
+            console.log("FAVORITOS SIN RESULTADOS");
+            break;
+        } else {
+
+            //// Muestra los gif en Mis favoritos
 
             // listado de gifos
             let gridFav = document.createElement("div");
@@ -101,20 +114,19 @@ function clickFav() {
                 max.setAttribute("src", "assets/icon-max-normal.svg");
                 hoverSearch(max, "assets/icon-max-hover.svg", "assets/icon-max-normal.svg");
 
-                
-                            ///// CLICK en ICONO TRASH
-                            trash.addEventListener("click", () => {
-                                sessionStorage.removeItem(`${urlId[index]}`);
-                                blockFavClick = 0;
-                                newRetrievedObject = [];
-                                console.log("TRASH", newRetrievedObject);
-                                favDiv.style.display = "none";
-                                //location.reload();
-                                clickFav();
-                                
-                                
-                            })
-                
+
+                ///// CLICK en ICONO TRASH
+                trash.addEventListener("click", () => {
+                    sessionStorage.removeItem(`${urlId[index]}`);
+                    blockFavClick = 0;
+                    newRetrievedObject = [];
+                    console.log("TRASH", newRetrievedObject);
+                    favDiv.style.display = "none";
+                    clickFav();
+
+
+                })
+
                 //////////// TRAE GIFOS DE LA API//////////////////
                 let gifo = document.createElement("img");
                 gifo.setAttribute("src", newRetrievedObject[index - 1].url);
@@ -145,7 +157,7 @@ function clickFav() {
             favSeeMore.setAttribute("class", "favSeeMore");
             ; break
         }
-        
+
     }
     blockFavClick = 1;
     console.log("blockFavClick", blockFavClick);
@@ -153,4 +165,4 @@ function clickFav() {
 }
 
 
-
+clickFav();

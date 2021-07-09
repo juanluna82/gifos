@@ -20,7 +20,10 @@
     <header>
         <div class="line"></div>
         <div class="header_nav">
-            <img src="assets/logo-mobile.svg" alt="LOGO" class="logo" id="logo">
+            <a href="index.html">
+                <img src="assets/logo-mobile.svg" alt="LOGO" class="logo" id="logo">
+            </a>
+            
 
 
             <nav>
@@ -31,17 +34,17 @@
                 <ul>
                     <li><a id="click_mn" href="#">Modo Nocturno</a></li>
                     <div class="underline"></div>
-                    <li><a href="#">Favoritos</a></li>
+                    <li><a href="favourites.html" id = "linkFav">Favoritos</a></li>
                     <div class="underline"></div>
                     <li><a href="#">Mis GIFOS</a></li>
-                    <li><img id="create" src="assets/button-crear-gifo.svg" alt=""></a></li>
+                    <li><a href="create_gifos.html"><img id="create" src="assets/CTA-crear-gifo-active.svg" alt=""></a></li>
                 </ul>
             </nav>
         </div>
 
     </header>
 
-    <main>
+    <main id= "mainCreate">
         <div class="create">
             <div class="camara">
                 <img src="assets/camara.svg" alt="" class="film">
@@ -120,9 +123,10 @@
     </footer>
     <div class="line"></div>
 
-    <!--<script src="js/script.js"></script> -->
+    
     <script src="https://www.webrtc-experiment.com/RecordRTC.js"></script>
     <script src="js/video_gifos.js"></script>
+    <script src="js/favourites.js"></script>
 </body>
 
 </html>

@@ -60,7 +60,7 @@ create.addEventListener('mouseout', () => {
 });
 
 
-
+/*
 // ACTIVE de NAV/////////////////////////////////
 // CREATE
 let createActive = document.getElementById("create");
@@ -69,7 +69,7 @@ createActive.addEventListener('click', () => {
         create_active = document.getElementById("create_active");
         createActive.setAttribute("src", "assets/CTA-crear-gifo-active.svg");
 })
-
+*/
 
 // HOVER de ARROW/////////////////////////////////
 // LEFT

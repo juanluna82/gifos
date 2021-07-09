@@ -34,7 +34,7 @@
                 <ul>
                     <li><a id="click_mn" href="#">Modo Nocturno</a></li>
                     <div class="underline"></div>
-                    <li><a href="favourites.html" id = "linkFav">Favoritos</a></li>
+                    <li><a href="#" id="linkFav">Favoritos</a></li>
                     <div class="underline"></div>
                     <li><a href="#">Mis GIFOS</a></li>
                     <li><a href="create_gifos.html"><img id="create" src="assets/button-crear-gifo.svg" alt=""></a></li>
@@ -45,63 +45,11 @@
     </header>
 
     <main id="main">
-        <div class="search">
-            <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span> </h1>
-            <div class="browser">
-                <img class="people" src="assets/ilustra_header.svg" alt="">
-                <div class="icon_browser" id="icon_browser">
-
-                    <div class="wrapper">
-                        <div class="search_input">
-                            <input type="text" name="Busca GIFOS y más" id="searchInput"
-                                placeholder="Busca GIFOS y más">
-                            <div class="autocomplet-box" id="suggestion">
-
-                                <li>
-                                    <img class="lupaSug" src="assets/icon-search.svg" alt="">
-                                    <a class="jsSug" href=""></a>
-                                </li>
-
-                                <li>
-                                    <img class="lupaSug" src="assets/icon-search.svg" alt="">
-                                    <a class="jsSug" href=""></a>
-                                </li>
-
-                                <li>
-                                    <img class="lupaSug" src="assets/icon-search.svg" alt="">
-                                    <a class="jsSug" href=""></a>
-                                </li>
-
-                                <li>
-                                    <img class="lupaSug" src="assets/icon-search.svg" alt="">
-                                    <a class="jsSug" href=""></a>
-                                </li>
-
-                            </div>
-
-                            <img class="lupa" id="lupaSug" src="assets/icon-search.svg" alt="">
-                            <img class="close" id="close" src="assets/close.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="trending">
-                <h3>Trending:</h3>
-                <p>Reactions, Entertainment, Sports, Stickers, Artists</p>
-            </div>
-        </div>
-
-        <div id="results">
-            <div id="titleSearch">
-                <div id="lineTitle"></div>
-                <h2 id="resultsTitle"></h2>
-            </div>
-            <div class="gifosGrid"></div>
-            <input type="button" id="seeMore" value="VER MÁS">
+        <div class="favDiv">
 
         </div>
 
+        <div class="search"> </div>
         <div class="trending_gifos">
 
             <div class="title">
@@ -150,8 +98,7 @@
 
                         <div class="gifos">
                             <div class="icons_gifos">
-                                <img id="favourites3" class="fav" src="assets/icon-fav.svg"
-                                        alt="">
+                                <img id="favourites3" class="fav" src="assets/icon-fav.svg" alt="">
 
                                 <a href="#" target="_blank"><img id="down" class="down" src="assets/icon-download.svg"
                                         alt="#"></a>
@@ -206,8 +153,8 @@
     <script src="js/script.js"></script>
     <script src="js/gifos_search.js"></script>
     <script src="js/carrousel.js"></script>
-    
-    
+    <script src="js/favourites.js"></script>
+
 </body>
 
 </html>
