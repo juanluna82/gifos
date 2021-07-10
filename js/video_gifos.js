@@ -12,6 +12,10 @@ let newGif = new FormData();
 let videoDiv = document.getElementById("video");
 let previewGif = document.getElementById("previewGif");
 
+let myGifSaved = [];
+
+
+
 /// APRIETO COMENZAR
 start.addEventListener("click", () => {
 
@@ -131,8 +135,13 @@ function stopRecordingCallback() {
     })
       .then((res) => res.json())
       .catch((error) => console.error("Error:", error))
-      .then(function (response) {
-        console.log("Success:", response.data.id)
+      .then(function (res) {
+          // guardo los gifs grabados en  un array//////
+        let GifSaved = res.data.id;
+        myGifSaved.push(GifSaved)
+        console.log("ID de Gif subido", myGifSaved);
+        localStorage.setItem("myGifs", JSON.stringify(myGifSaved));
+
         document.getElementById("texto").textContent= "GIFO subido con éxito"
         loadersvg = document.getElementById("load");
         loadersvg.setAttribute("src","assets/ok.svg");
@@ -204,6 +213,12 @@ function cronometro() {
     
 }
 
+/////// CARGO  EN EL ARRAY PARA ACUMULAR EN EL LOCALSTORAGE /////
+let GifUp = JSON.parse(localStorage.getItem("myGifs"));
+myGifSaved = GifUp;
+if (myGifSaved == null) {
+myGifSaved = [];
+}
 
 
 

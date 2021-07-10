@@ -250,9 +250,6 @@ function gifoResult(searchString) {
 
 };
 
-
-
-
 ////// Hover FUNCTION
 
 

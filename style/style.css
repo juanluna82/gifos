@@ -254,6 +254,195 @@ main .favDiv .favSeeMore:hover {
   }
 }
 
+main .misGifDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .misGifDiv .favLogo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+}
+
+main .misGifDiv .favLogo .FavImg {
+  font-size: 28px;
+  padding: 5px 0;
+}
+
+main .misGifDiv .favLogo .FavTitle {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+main .misGifDiv .nonFav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 5%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .misGifDiv .nonFav img {
+  width: 20vw;
+}
+
+main .misGifDiv .nonFav h2 {
+  font-size: 22px;
+  width: 50vw;
+  font-weight: bold;
+  color: #50E3C2;
+  text-align: center;
+  margin: 30px;
+}
+
+main .misGifDiv .gridFav {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20fr  20fr 20fr  20fr;
+      grid-template-columns: 20fr  20fr 20fr  20fr;
+  margin: 5%;
+}
+
+main .misGifDiv .gridFav .gifos {
+  height: 20vw;
+}
+
+main .misGifDiv .gridFav .gifos .icons_gifos {
+  display: none;
+}
+
+main .misGifDiv .gridFav .gifos img {
+  margin: 5%;
+  width: 90%;
+  height: 90%;
+}
+
+main .misGifDiv .gridFav .gifos .user {
+  display: none;
+}
+
+main .misGifDiv .favSeeMore {
+  display: block;
+  border: 1px solid #572EE5;
+  border-radius: 25px;
+  height: 50px;
+  width: 15%;
+  background-color: #FFFFFF;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  color: #572EE5;
+  cursor: pointer;
+  margin: 2% 0 5%;
+}
+
+main .misGifDiv .favSeeMore:hover {
+  background-color: #572EE5;
+  color: #FFFFFF;
+}
+
+@media screen and (min-width: 800px) {
+  main .gridFav {
+    width: 90%;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+  }
+  main .gridFav .gifos {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    position: relative;
+    margin: auto;
+    width: 100%;
+  }
+  main .gridFav .gifos:hover {
+    background-color: #572EE5;
+    z-index: 3;
+    opacity: 0.7;
+  }
+  main .gridFav .gifos:hover .user {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0 0 10% 10%;
+    color: #FFFFFF;
+    font-family: "Roboto", sans-serif;
+    z-index: 2;
+  }
+  main .gridFav .gifos:hover .user h2 {
+    font-size: 15px;
+    padding-bottom: 10%;
+  }
+  main .gridFav .gifos:hover .user p {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  main .gridFav .gifos:hover .icons_gifos {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 2%;
+    width: 40%;
+    z-index: 4;
+    cursor: pointer;
+  }
+  main .gridFav .gifos:hover .icons_gifos a {
+    padding: 3%;
+    z-index: 0;
+  }
+  main .gridFav .gifos:hover .gif {
+    opacity: 0.3;
+  }
+  main .gridFav .gifos .gif {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    grid-column: 1/5;
+    grid-row: 0/3;
+    width: 100%;
+    max-width: unset;
+    height: 200px;
+    margin: unset;
+    z-index: -1;
+  }
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   max-width: 1440px;
