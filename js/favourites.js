@@ -7,7 +7,7 @@ let blockFavClick = 0;
 
 
 function clickFav() {
-    
+
     searchDiv.style.display = "none";
     while (blockFavClick == 0) {
 
@@ -25,28 +25,28 @@ function clickFav() {
 
         console.log("prueba", newRetrievedObject.length);
 
-            /// logo y titulo
+        /// logo y titulo
 
-            let favDiv = document.createElement("div")
-            searchDiv.before(favDiv);
-            favDiv.setAttribute("class", "favDiv");
-            favDiv.style.display = "flex";
-            let favLogo = document.createElement("div")
-            favDiv.appendChild(favLogo);
-            favLogo.setAttribute("class", "favLogo");
+        let favDiv = document.createElement("div")
+        searchDiv.before(favDiv);
+        favDiv.setAttribute("class", "favDiv");
+        favDiv.style.display = "flex";
+        let favLogo = document.createElement("div")
+        favDiv.appendChild(favLogo);
+        favLogo.setAttribute("class", "favLogo");
 
-            let FavImg = document.createElement("img")
-            favLogo.appendChild(FavImg);
-            FavImg.setAttribute("src", "assets/icon-favoritos.svg");
-            FavImg.setAttribute("class", "FavImg");
+        let FavImg = document.createElement("img")
+        favLogo.appendChild(FavImg);
+        FavImg.setAttribute("src", "assets/icon-favoritos.svg");
+        FavImg.setAttribute("class", "FavImg");
 
-            let FavTitle = document.createElement("h2")
-            favLogo.appendChild(FavTitle);
-            FavTitle.innerHTML = "Favoritos";
-            FavTitle.setAttribute("class", "FavTitle");
+        let FavTitle = document.createElement("h2")
+        favLogo.appendChild(FavTitle);
+        FavTitle.innerHTML = "Favoritos";
+        FavTitle.setAttribute("class", "FavTitle");
 
         if (newRetrievedObject.length < 2) {
-            
+
             // FAVORITOS SIN RESLTADOS
             let nonFav = document.createElement("div");
             favDiv.appendChild(nonFav);
@@ -123,8 +123,17 @@ function clickFav() {
                     console.log("TRASH", newRetrievedObject);
                     favDiv.style.display = "none";
                     clickFav();
+                })
 
 
+                ///// CLICK en ICONO DOWNLOAD
+                download.addEventListener("click", () => {
+                    console.log(gifo.src)
+                   fetch(gifo.src)
+                    .then((response) => response.blob())
+                    .then(function (myGifBlob) {
+                      gifDown(myGifBlob, index);
+                    });
                 })
 
                 //////////// TRAE GIFOS DE LA API//////////////////
@@ -166,3 +175,16 @@ function clickFav() {
 
 
 clickFav();
+
+
+
+function gifDown (blob, idBlob) {
+    console.log("user"+ idBlob);
+    var objectURL = URL.createObjectURL(blob);
+    console.log(objectURL);
+    let flags = document.createElement("a");
+    flags.href = objectURL;
+    flags.download = `Gif DOwnload ${newRetrievedObject[idBlob - 1].user + idBlob}.gif`;
+    console.log(flags)
+    flags.click();
+  }
