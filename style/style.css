@@ -179,6 +179,90 @@ main .favDiv .favSeeMore:hover {
   color: #FFFFFF;
 }
 
+main .maxDiv {
+  position: relative;
+}
+
+main .maxDiv .favMax {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .maxDiv .favMax .xDiv {
+  width: 100%;
+}
+
+main .maxDiv .favMax .xDiv img {
+  position: absolute;
+  right: 10%;
+  top: -10%;
+}
+
+main .maxDiv .favMax .gif {
+  width: 40vw;
+  padding: 5% 0 3%;
+}
+
+main .maxDiv .favMax .gifos {
+  width: 50vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main .maxDiv .favMax .gifos .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #000000;
+}
+
+main .maxDiv .favMax .gifos .user h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  margin: 2%;
+}
+
+main .maxDiv .favMax .gifos .user p {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 2%;
+}
+
+main .maxDiv .favMax .gifos .icons_gifos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main .maxDiv .favMax .gifos .icons_gifos a {
+  padding: 25% 0;
+  margin: 0 10%;
+}
+
+main .maxDiv .favMax .gifos .icons_gifos a .favSearch {
+  padding: 30% 5%;
+}
+
 @media screen and (min-width: 800px) {
   main .gridFav {
     width: 90%;
