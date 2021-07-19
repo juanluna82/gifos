@@ -2,6 +2,7 @@
 
 const myApiKey = "wBmQSDXkME1hKn80LC75kd2OSaeifuM4";
 
+
 /** funcion de fetch para cualquier URL */
 async function myFetch(url) {
     let res = await fetch(url);
@@ -204,6 +205,18 @@ function gifoResult(searchString) {
 
             })
 
+
+            //CLICK EN ICONO DOWNLOAD////
+
+            download.addEventListener("click", () => {
+                console.log(gifo.src)
+                fetch(gifo.src)
+                    .then((response) => response.blob())
+                    .then(function (myGifBlob) {
+                        gifDown(myGifBlob, i,urlSearch);
+                    });
+            })
+
             //////////// TRAE GIFOS DE LA API//////////////////
             let gifo = document.createElement("img");
             gifo.setAttribute("src", json.data[i].images.fixed_width.url);
@@ -279,5 +292,12 @@ vermas.addEventListener("click", () => {
 
 
 
-
-console.log("encontrado json = " + encontrado);
+function gifDown(blob, idBlob, newRetrievedObject) {
+       var objectURL = URL.createObjectURL(blob);
+    console.log(objectURL);
+    let flags = document.createElement("a");
+    flags.href = objectURL;
+    flags.download = `Gif DOwnload ${newRetrievedObject[idBlob] + idBlob}.gif`;
+    console.log(flags)
+    flags.click();
+}

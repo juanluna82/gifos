@@ -9,64 +9,94 @@ let urlIdCarrousel = [];
 let fav;
 let offseTrend = 0;
 
+
 function gifosTrendingLoad() {
+    
     let limiTrend = 3;
     let trend = myFetch(`https://api.giphy.com/v1/gifs/trending?api_key=wBmQSDXkME1hKn80LC75kd2OSaeifuM4&limit=${limiTrend}&offset=${offseTrend}`);
     trend.then(json => {
-        
+
         //CARGA DE GIF EN ARRAYS/////////////////////////////////////////////////////////////////////////////////
         for (let index = 0; index < json.data.length; index++) {
+            
+            let download = document.getElementsByClassName("downS")[index];
+
             arrayOfGifs.push(json.data[index].images.original.url)//url del gif .
             arrayOfGifsUser.push(json.data[index].username)//username del gif .
             arrayOfGifsTitle.push(json.data[index].title)//Title del gif
             urlIdCarrousel.push(json.data[index].id);
-            console.log("index =" + index);
-            console.log("INDEX + OFF = " + (index ));
             console.log(arrayOfGifs);
             document.getElementById("gif" + (index + 1)).setAttribute("src", arrayOfGifs[index]);
-            document.getElementById("h2" + (index + 1)).textContent = arrayOfGifsUser[index ];
-            document.getElementById("p" + (index + 1)).textContent = arrayOfGifsTitle[index ];
+            document.getElementById("h2" + (index + 1)).textContent = arrayOfGifsUser[index];
+            document.getElementById("p" + (index + 1)).textContent = arrayOfGifsTitle[index];
 
             let fav = document.getElementsByClassName("fav")[index];
             hoverSearch(fav, "assets/icon-fav-hover.svg", "assets/icon-fav.svg");
-            let encontrado = sessionStorage.getItem(`${urlIdCarrousel[index]}`);
-            if (encontrado === null) {
-                console.log("encontrado NULL icon normal")
-                fav.setAttribute("src", "assets/icon-fav.svg");
-            } else {
-                console.log("encontrado REALLL icon active")
+
+//// VER KEY Y FOUNDSS DE FAVORITOS
+
+            let key = localStorage.key(index);
+            //let encontrado = sessionStorage.getItem(`${urlIdCarrousel[index]}`);
+            //let comparacion = urlIdCarrousel[index];
+            console.log("para COMPRARAR EN LOCALSTORAGE KEY(INDEX)" + key);
+            //console.log("para comprar " + comparacion);
+            let found = urlIdCarrousel.find(e => e = key);
+            console.log("urlIdCarrousel " + urlIdCarrousel)
+            console.log("FIND INDEXXX", urlIdCarrousel.findIndex(element => element = key))
+            console.log("FOUND " + found)
+            // if (key == null || key != comparacion)
+            key;
+            if (found == true) {
+                console.log("FOUNDDDDDDDDDDDDDDDDDDDDDDDD")
+                
                 fav.setAttribute("src", "assets/icon-fav-active.svg");
                 hoverSearch(fav, "assets/icon-fav-active.svg", "assets/icon-fav-active.svg");
+            } else {
+ 
+                fav.setAttribute("src", "assets/icon-fav.svg");
+                console.log("encontrado REALLL icon active")
+
             }
-            console.log("ENCONTRADO POR FUERA = " + encontrado);
+
+
             
-            //let max = document.getElementsByClassName("max")[index - 1];
-            //let down = document.getElementsByClassName("down")[index - 1];
-            fav.addEventListener("click", () => {
-                encontrado = sessionStorage.getItem(`${urlIdCarrousel[index]}`);
+
+            //CLICK EN ICONO FAVORITO////
+            
+
+            fav.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                encontrado = localStorage.getItem(`${urlIdCarrousel[index]}`);
                 console.log("buscamos = " + encontrado);
                 if (encontrado === null) {
                     console.error(` agrega ${urlIdCarrousel[index]}`);
-                    sessionStorage.setItem(`${urlId}`, `{"url": "${urlSearch}", "user": "${userGif}", "title": "${titleGif}"}`);
+                    localStorage.setItem(`${urlIdCarrousel[index]}`, `{"url": "${arrayOfGifs[index]}", "user": "${arrayOfGifsUser[index]}", "title": "${arrayOfGifsTitle[index]}"}`);
                     fav.setAttribute("src", "assets/icon-fav-active.svg")
                     hoverSearch(fav, "assets/icon-fav-active.svg", "assets/icon-fav-active.svg");
                 } else {
-                    console.error("ESTA EN SESSION Y borro "+ urlIdCarrousel[index]);
-                    sessionStorage.removeItem(`${urlIdCarrousel[index]}`);
+                    console.error("ESTA EN SESSION Y borro " + urlIdCarrousel[index]);
+                    localStorage.removeItem(`${urlIdCarrousel[index]}`);
                     fav.setAttribute("src", "assets/icon-fav.svg")
                     hoverSearch(fav, "assets/icon-fav-hover.svg", "assets/icon-fav.svg");
-                    
-                }
-                
-            })
-        }
 
+                }
+            });
+
+        }
+            ////// FUERA DEL FOR ////
+        console.log("urlIdCarrousel " + urlIdCarrousel)
 
     })
         .catch(err => console.error(err));
+        
 };
 
+
 gifosTrendingLoad();
+
+
+console.log("urlIdCarrousel " + urlIdCarrousel)
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -79,13 +109,14 @@ buttonNN.addEventListener('click', () => {
     if (offseTrend >= 9) {
         offseTrend = 9;
     } else {
+        
         offseTrend += 3;
         arrayOfGifs = []
         arrayOfGifsUser = []
-        arrayOfGifsTitle = [];
-        console.log("offseTrend = " + offseTrend);
+        arrayOfGifsTitle = []
+        urlIdCarrousel = [];
+        found = [];
         gifosTrendingLoad();
-        
     }
 });
 
@@ -102,6 +133,7 @@ buttonNL.addEventListener('click', () => {
         arrayOfGifs = []
         arrayOfGifsUser = []
         arrayOfGifsTitle = [];
+        urlIdCarrousel = [];
         console.log("offseTrend = " + offseTrend);
         gifosTrendingLoad();
     }
@@ -141,7 +173,7 @@ function gifosTrendingLoad() {
             hoverSearch(down, "assets/icon-download-hover.svg", "assets/icon-download.svg");
 
 
-            
+
             let encontrado = sessionStorage.getItem(`${urlIdCarrousel[index + firstIF - 1]}`);
             if (encontrado === null) {
                 console.log("encontrado NULL icon normal")
@@ -278,20 +310,20 @@ buttonNL.addEventListener('click', () => {
                 // FIRST LOAD DE GIFOS ///////////////////////////////////////////////////////////////////////////////////
                 for (let index = 1; index < numberOfImg; index++) {
                     console.log("First if antes de click = " + firstIF);
-                    
+
                     console.log(fav);
                     hoverSearch(fav, "assets/icon-fav-hover.svg", "assets/icon-fav.svg");
                     hoverSearch(max, "assets/icon-max-hover.svg", "assets/icon-max-normal.svg");
                     hoverSearch(down, "assets/icon-download-hover.svg", "assets/icon-download.svg");
                     ///// CLICK en ICONO FAVORITO
                     fav.addEventListener("click", () => {
-                           
+
                             //console.log("First if en click = " + firstIF);
                             //console.log("arrayOfGifs[index - 1 + firstIF] = " + arrayOfGifs[index - 1 + firstIF]);
                             //console.log("urlIdCarrousel[index - 1 + firstIF] = " + urlIdCarrousel[index - 1 + firstIF]);
                             //console.log(fav);
-        
-        
+
+
                         let encontrado = sessionStorage.getItem(`${urlIdCarrousel[index - 1 + firstIF]}`);
                         console.log("buscamos = " + encontrado);
                         console.log(sessionStorage.getItem(`${urlIdCarrousel[index - 1 + firstIF]}`));
@@ -306,8 +338,8 @@ buttonNL.addEventListener('click', () => {
                             fav.setAttribute("src", "assets/icon-fav.svg")
                             hoverSearch(fav, "assets/icon-fav-hover.svg", "assets/icon-fav.svg");
                         }
-        
+
                     })
-        
+
                 }
 */

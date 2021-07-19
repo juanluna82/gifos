@@ -1229,7 +1229,7 @@ footer p {
     z-index: 4;
     cursor: pointer;
   }
-  main #results .gifosGrid .gifos:hover .icons_gifos a {
+  main #results .gifosGrid .gifos:hover .icons_gifos .icons {
     padding: 3%;
     z-index: 0;
   }
