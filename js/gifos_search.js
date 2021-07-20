@@ -1,7 +1,14 @@
 //////UTILITIES///////////////
 
 const myApiKey = "wBmQSDXkME1hKn80LC75kd2OSaeifuM4";
+let trendingGifos = document.getElementsByClassName("trending_gifos")[0];
 
+let navBar = document.getElementsByClassName("navBar")[0];
+let searchDiv = document.getElementsByClassName("search")[0];
+let footer = document.getElementsByClassName("footer")[0];
+let logo = document.getElementsByClassName("logo")[0];
+let line1 = document.getElementsByClassName("line")[0];
+let line2 = document.getElementsByClassName("line")[1];
 
 /** funcion de fetch para cualquier URL */
 async function myFetch(url) {
@@ -186,19 +193,18 @@ function gifoResult(searchString) {
             favourites.addEventListener("click", () => {
 
                 console.log(favourites);
-                let encontrado = sessionStorage.getItem(`${urlId}`);
+                let encontrado = localStorage.getItem(`${urlId}`);
                 console.log("buscamos = " + encontrado);
-                console.log(sessionStorage.getItem(`${urlId}`));
+                console.log(localStorage.getItem(`${urlId}`));
                 if (encontrado === null) {
                     console.log(` agrega ${urlId}`);
                     console.log(urlSearch);
-                    sessionStorage.setItem(`${urlId}`, `{"url": "${urlSearch}", "user": "${userGif}", "title": "${titleGif}"}`);
-                    //sessionStorage.setItem(`${urlId}`, urlSearch);
+                    localStorage.setItem(`${urlId}`, `{"url": "${urlSearch}", "user": "${userGif}", "title": "${titleGif}"}`);
                     favourites.setAttribute("src", "assets/icon-fav-active.svg")
                     hoverSearch(favourites, "assets/icon-fav-active.svg", "assets/icon-fav-active.svg");
                 } else {
                     console.log("borro de favoritos");
-                    sessionStorage.removeItem(`${urlId}`);
+                    localStorage.removeItem(`${urlId}`);
                     favourites.setAttribute("src", "assets/icon-fav.svg")
                     hoverSearch(favourites, "assets/icon-fav-hover.svg", "assets/icon-fav.svg");
                 }
@@ -216,6 +222,126 @@ function gifoResult(searchString) {
                         gifDown(myGifBlob, i,urlSearch);
                     });
             })
+
+
+            ///// CLICK en ICONO MAXIMIZE
+            aMax.addEventListener("click", () => {
+                console.log("aca estoy");
+                
+                results.style.display = "none";
+                
+                //favDiv.style.display = "none";
+                navBar.style.display = "none";
+                footer.style.display = "none";
+                searchDiv.style.display = "none";
+                trendingGifos.style.display = "none";
+                
+                line2.style.display = "none";
+                line1.style.opacity = "0.5";
+                logo.style.opacity = "0.5";
+
+                let maxDiv = document.createElement("div");
+                searchDiv.before(maxDiv);
+                maxDiv.setAttribute("class", "maxDiv");
+
+                let favMax = document.createElement("div")
+                maxDiv.appendChild(favMax);
+                favMax.setAttribute("class", "favMax");
+
+                let xDiv = document.createElement("div")
+                favMax.appendChild(xDiv);
+                xDiv.setAttribute("class", "xDiv");
+
+                let xImgDiv = document.createElement("img")
+                xDiv.appendChild(xImgDiv);
+                xImgDiv.setAttribute("class", "xImgDiv");
+                xImgDiv.setAttribute("src", "assets/close.svg");
+
+                // CLOSE EN MAX///
+
+                xImgDiv.addEventListener("click", () => {
+                    console.log("aca estoy")
+                    maxDiv.style.display = "none";
+                    trendingGifos.style.display = "block";
+                    results.style.display = "flex";
+                    navBar.style.display = "block";
+                    footer.style.display = "block";
+                    line2.style.display = "block";
+                    line1.style.opacity = "1";
+                    logo.style.opacity = "1";
+                    clickFav();
+                })
+
+                
+                    // crear div con el overlay con iconos en cada gifos////
+
+                    //////////// TRAE GIFOS DE LA API//////////////////
+                    let gifo = document.createElement("img");
+                    gifo.setAttribute("src", json.data[i].images.fixed_width.url);
+                    gifo.setAttribute("class", "gif");
+                    favMax.appendChild(gifo);
+
+                    //div general
+                    let divGifos = document.createElement("div");
+                    favMax.appendChild(divGifos);
+                    divGifos.setAttribute("class", "gifos");
+
+
+
+                    /// User  y Titulo del GIFOS traido de la API/////
+
+                    // div contenedor user///
+                    let divUser = document.createElement("div");
+                    divGifos.appendChild(divUser)
+                    divUser.setAttribute("class", "user");
+                    // h2 user///
+                    let user = document.createElement("h2");
+                    user.innerHTML = json.data[i].username;
+                    divUser.appendChild(user);
+                    // p user///
+                    let pUser = document.createElement("p");
+                    pUser.innerHTML = json.data[i].title;
+                    divUser.appendChild(pUser);
+
+
+                    //div contenedor de iconos
+                    let iconsGifos = document.createElement("div");
+                    divGifos.appendChild(iconsGifos);
+                    iconsGifos.setAttribute("class", "icons_gifos");
+
+                    //icono favoritos//
+                    let aTrash = document.createElement("a");
+                    iconsGifos.appendChild(aTrash);
+                    let trash = document.createElement("img");
+                    aTrash.appendChild(trash);
+                    trash.setAttribute("class", "favSearch");
+                    trash.setAttribute("src", "assets/icon-fav-active.svg");
+
+
+                    //icono download//
+                    let aDownload = document.createElement("a");
+                    iconsGifos.appendChild(aDownload);
+                    let download = document.createElement("img");
+                    aDownload.appendChild(download);
+                    download.setAttribute("class", "downS");
+                    download.setAttribute("src", "assets/icon-download.svg");
+                    hoverSearch(download, "assets/icon-download-hover.svg", "assets/icon-download.svg");
+
+
+                    ///// CLICK en ICONO DOWNLOAD
+                    download.addEventListener("click", () => {
+                        console.log(gifo.src)
+                        fetch(gifo.src)
+                            .then((response) => response.blob())
+                            .then(function (myGifBlob) {
+                                gifDown(myGifBlob, i);
+                            });
+                    })
+
+
+
+
+            });
 
             //////////// TRAE GIFOS DE LA API//////////////////
             let gifo = document.createElement("img");
@@ -297,7 +423,7 @@ function gifDown(blob, idBlob, newRetrievedObject) {
     console.log(objectURL);
     let flags = document.createElement("a");
     flags.href = objectURL;
-    flags.download = `Gif DOwnload ${newRetrievedObject[idBlob] + idBlob}.gif`;
+    flags.download = `Gif DOwnload ${idBlob}.gif`;
     console.log(flags)
     flags.click();
 }

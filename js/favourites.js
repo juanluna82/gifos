@@ -1,15 +1,14 @@
 
 let favDiv = document.getElementById("favDiv");
-let trendingGifos = document.getElementsByClassName("trending_gifos")[0];
-let navBar = document.getElementsByClassName("navBar")[0];
-let searchDiv = document.getElementsByClassName("search")[0];
-let footer = document.getElementsByClassName("footer")[0];
-let logo = document.getElementsByClassName("logo")[0];
-let line1 = document.getElementsByClassName("line")[0];
-let line2 = document.getElementsByClassName("line")[1];
+//let trendingGifos = document.getElementsByClassName("trending_gifos")[0];
+//let navBar = document.getElementsByClassName("navBar")[0];
+//let searchDiv = document.getElementsByClassName("search")[0];
+//let footer = document.getElementsByClassName("footer")[0];
+//let logo = document.getElementsByClassName("logo")[0];
+//let line1 = document.getElementsByClassName("line")[0];
+//let line2 = document.getElementsByClassName("line")[1];
 let newRetrievedObject = [];
 let blockFavClick = 0;
-
 
 
 function clickFav() {
@@ -19,17 +18,15 @@ function clickFav() {
 
         let urlId = [];
 
-        //// Rescata los gif del session storage
-        for (let i = 0; i < sessionStorage.length; i++) {
-            let key = sessionStorage.key(i + 1);
-            keyUrl = sessionStorage.key(i);
-            retrievedObject = JSON.parse(sessionStorage.getItem(key));
-            newRetrievedObject.push(retrievedObject);
-            urlId.push(keyUrl);
-            console.log("newRetrievedObject adentor", newRetrievedObject.length)
+        //// Rescata los gif del local storage
+        for (let i = 0; i < localStorage.length; i++) {
+            keyUrl = localStorage.key(i);
+            if (keyUrl !== "myGifs") {
+                retrievedObject = JSON.parse(localStorage.getItem(keyUrl));
+                newRetrievedObject.push(retrievedObject);
+                urlId.push(keyUrl);
+            }
         }
-
-        console.log("prueba", newRetrievedObject.length);
 
         /// logo y titulo
 
@@ -51,7 +48,7 @@ function clickFav() {
         FavTitle.innerHTML = "Favoritos";
         FavTitle.setAttribute("class", "FavTitle");
 
-        if (newRetrievedObject.length < 2) {
+        if (newRetrievedObject.length < 1) {
 
             // FAVORITOS SIN RESLTADOS
             let nonFav = document.createElement("div");
@@ -81,7 +78,7 @@ function clickFav() {
             gridFav.setAttribute("class", "gridFav");
 
 
-            for (let index = 1; index < sessionStorage.length; index++) {
+            for (let index = 0; index < newRetrievedObject.length; index++) {
 
                 // crear div con el overlay con iconos en cada gifos////
                 //div general
@@ -123,7 +120,7 @@ function clickFav() {
 
                 ///// CLICK en ICONO TRASH
                 trash.addEventListener("click", () => {
-                    sessionStorage.removeItem(`${urlId[index]}`);
+                    localStorage.removeItem(`${urlId[index]}`);
                     blockFavClick = 0;
                     newRetrievedObject = [];
                     console.log("TRASH", newRetrievedObject);
@@ -191,7 +188,7 @@ function clickFav() {
 
                     //////////// TRAE GIFOS DE LA API//////////////////
                     let gifo = document.createElement("img");
-                    gifo.setAttribute("src", newRetrievedObject[index - 1].url);
+                    gifo.setAttribute("src", newRetrievedObject[index].url);
                     gifo.setAttribute("class", "gif");
                     favMax.appendChild(gifo);
 
@@ -210,11 +207,11 @@ function clickFav() {
                     divUser.setAttribute("class", "user");
                     // h2 user///
                     let user = document.createElement("h2");
-                    user.innerHTML = newRetrievedObject[index - 1].user;
+                    user.innerHTML = newRetrievedObject[index].user;
                     divUser.appendChild(user);
                     // p user///
                     let pUser = document.createElement("p");
-                    pUser.innerHTML = newRetrievedObject[index - 1].title;
+                    pUser.innerHTML = newRetrievedObject[index].title;
                     divUser.appendChild(pUser);
 
 
@@ -242,21 +239,21 @@ function clickFav() {
                     hoverSearch(download, "assets/icon-download-hover.svg", "assets/icon-download.svg");
 
 
-                                    ///// CLICK en ICONO DOWNLOAD
-                download.addEventListener("click", () => {
-                    console.log(gifo.src)
-                    fetch(gifo.src)
-                        .then((response) => response.blob())
-                        .then(function (myGifBlob) {
-                            gifDown(myGifBlob, index);
-                        });
-                })
+                    ///// CLICK en ICONO DOWNLOAD
+                    download.addEventListener("click", () => {
+                        console.log(gifo.src)
+                        fetch(gifo.src)
+                            .then((response) => response.blob())
+                            .then(function (myGifBlob) {
+                                gifDown(myGifBlob, index);
+                            });
+                    })
 
                 })
 
                 //////////// TRAE GIFOS DE LA API//////////////////
                 let gifo = document.createElement("img");
-                gifo.setAttribute("src", newRetrievedObject[index - 1].url);
+                gifo.setAttribute("src", newRetrievedObject[index].url);
                 gifo.setAttribute("class", "gif");
                 divGifos.appendChild(gifo);
 
@@ -269,11 +266,11 @@ function clickFav() {
                 divUser.setAttribute("class", "user");
                 // h2 user///
                 let user = document.createElement("h2");
-                user.innerHTML = newRetrievedObject[index - 1].user;
+                user.innerHTML = newRetrievedObject[index].user;
                 divUser.appendChild(user);
                 // p user///
                 let pUser = document.createElement("p");
-                pUser.innerHTML = newRetrievedObject[index - 1].title;
+                pUser.innerHTML = newRetrievedObject[index].title;
                 divUser.appendChild(pUser);
 
             }
