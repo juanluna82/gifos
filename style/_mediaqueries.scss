@@ -262,7 +262,7 @@
                           
                         .gifos {
                             position: relative;
-                            margin: 0 2%;
+                            margin: 0 1%;
                             width: 50%;
                             
                             &:hover {
@@ -303,11 +303,11 @@
                                 display: flex;
                                 padding: 2%;
                                 padding-right: 5%;
-                                width: 40%;
+                                //width: 40%;
                                 z-index: 400;
                                 
 
-                                a {
+                                img {
                                     padding: 3%;
                                     z-index: 0;
                                     

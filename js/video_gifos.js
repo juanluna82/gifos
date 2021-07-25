@@ -10,7 +10,7 @@ let recorder;
 let tape = 0;
 let newGif = new FormData();
 let videoDiv = document.getElementById("video");
-let previewGif = document.getElementById("previewGif");
+let preLoadGif = document.getElementById("preLoadGif");
 
 let myGifSaved = [];
 
@@ -79,7 +79,7 @@ start.addEventListener("click", () => {
             start.textContent = "GRABAR";
             start.setAttribute("style", "display: block");
             start.textContent = "COMENZAR";
-            previewGif.style.display = "none";
+            preLoadGif.style.display = "none";
             document.getElementById("title").textContent = "¿Nos das acceso a tu cámara?";
             document.getElementById("text").textContent = "El acceso a tu camara será válido sólo por el tiempo en el que estés creando el GIFO.";
             document.getElementById("title").style.display = "block";
@@ -100,8 +100,8 @@ start.addEventListener("click", () => {
         three.setAttribute("src", "assets/paso-a-paso-hover-3.svg");
         start.style.display = "none";
         repeat.style.display = "none";
-        estadoSvg = document.getElementById("estado");
-        estadoSvg.style.display = "block";
+        overlayMode = document.getElementById("overlayMode");
+        overlayMode.style.display = "flex";
     }
 });
 
@@ -111,9 +111,9 @@ start.addEventListener("click", () => {
 
 function stopRecordingCallback() {
     videoDiv.style.display = "none";
-    previewGif.src = URL.createObjectURL(recorder.getBlob());  
-    document.getElementById("download").setAttribute("href",previewGif.src); 
-    previewGif.style.display = "block";
+    preLoadGif.src = URL.createObjectURL(recorder.getBlob());  
+    document.getElementById("iconPLDonw").setAttribute("href",preLoadGif.src); 
+    preLoadGif.style.display = "block";
     recorder.stream.stop();
     newGif.append("file", recorder.getBlob(), "myGif.gif");
     console.log(newGif.get("file"));
@@ -143,11 +143,11 @@ function stopRecordingCallback() {
         localStorage.setItem("myGifs", JSON.stringify(myGifSaved));
 
         document.getElementById("texto").textContent= "GIFO subido con éxito"
-        loadersvg = document.getElementById("load");
-        loadersvg.setAttribute("src","assets/ok.svg");
-        loadersvg.style.display = "block";
-        icon=document.getElementById("icon")
-        icon.style.display = "block";
+        loaderImg = document.getElementById("loader");
+        loaderImg.setAttribute("src","assets/ok.svg");
+        loaderImg.style.display = "block";
+        iconPL=document.getElementById("iconPL")
+        iconPL.style.display = "block";
         }   
       
       );

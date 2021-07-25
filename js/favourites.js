@@ -1,4 +1,6 @@
 
+
+
 let favDiv = document.getElementById("favDiv");
 //let trendingGifos = document.getElementsByClassName("trending_gifos")[0];
 //let navBar = document.getElementsByClassName("navBar")[0];

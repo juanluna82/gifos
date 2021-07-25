@@ -32,10 +32,14 @@
                 <label class="menu_x" for="menu"><i class="fas fa-times"></i></label>
 
                 <ul>
-                    <li><a id="click_mn" href="#">Modo Nocturno</a></li>
-                    <div class="underline"></div>
-                    <li><a href="favourites.html" id = "linkFav">Favoritos</a></li>
-                    <div class="underline"></div>
+                    <li><a id="click_mn" href="#">Modo Nocturno</a>
+                        <div class="underline"></div>
+                    </li>
+                    
+                    <li><a href="favourites.html" id = "linkFav">Favoritos</a>
+                        <div class="underline"></div>
+                    </li>
+                    
                     <li><a href="mis_gifos.html">Mis GIFOS</a></li>
                     <li><a href="create_gifos.html"><img id="create" src="assets/CTA-crear-gifo-active.svg" alt=""></a></li>
                 </ul>
@@ -56,18 +60,18 @@
                         <h2 id="title">Aquí podrás <br> crear tus propios <span>GIFOS</span> </h2>
                         <p id="text">Crea tu GIFO en sólo 3 pasos! <br> (sólo necesitas una cámara para grabar un video)
                         </p>
-                        <video id="video" src=""></video>
-                        <div class="preview">
-                            <img style="display: none;" id="previewGif" src="" alt="">
+                        <video id="video" src="#"></video>
+                        <div class="preLoad">
+                            <img style="display: none;" id="preLoadGif" src="#" alt="">
                             <div id="overlay" class="overlay">
-                                <div style="display: none;" id="icon" class="icon">
-                                    <a id="download" style="cursor:pointer" download="tuGifo.gif" href=""
+                                <div style="display: none;" id="iconPL" class="iconPL">
+                                    <a id="iconPLDonw" class="iconPLDonw" download="tuGifo.gif" href=""
                                         target="_blank"> <img src="../assets/icon-download.svg" alt=""> </a>
-                                    <a id="copy" style="cursor:pointer"><img src="../assets/icon-link-normal.svg"
+                                    <a id="iconPLink" class="iconPLink"><img src="../assets/icon-link-normal.svg"
                                             alt=""> </a>
                                 </div>
-                                <div id="estado" class="estado" style="display: none;">
-                                    <img id="load" src="../assets/loader.svg" alt="">
+                                <div id="overlayMode" class="overlayMode" style="display: none;">
+                                    <img id="loader" src="../assets/loader.svg" alt="">
                                     <p id="texto">Estamos subiendo tu Gifo</p>
                                 </div>
                             </div>

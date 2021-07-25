@@ -1,4 +1,4 @@
-/*SCSS para cambiar a modo nocturno cuando hacen click*/
+//SCSS para cambiar a modo nocturno cuando hacen click
 
 body {
     font-family: $font-montserrat;
@@ -215,6 +215,7 @@ main {
                             overflow-y: auto;
                             opacity: 0;
                             pointer-events: 0;
+                            margin: 0;
 
                             li {
                                 display: none;
@@ -349,6 +350,7 @@ main {
             }
     
             input {
+                display: none;
                 border: 1px solid $color-white;
                 border-radius: 25px;
                 height: 50px;
@@ -420,8 +422,8 @@ main {
 
                         .gif {
                             width: 70vw;
-                            max-width: 300px;
-                            
+                            max-width: 400px;
+                            height: 100%;
                         }
 
                         .user {

@@ -1,6 +1,5 @@
 
 let favDiv = document.getElementById("favDiv");
-let searchDiv = document.getElementsByClassName("search")[0];
 let newRetrievedObject = [];
 let blockFavClick = 0;
 let gifId;

@@ -32,10 +32,14 @@
                 <label class="menu_x" for="menu"><i class="fas fa-times"></i></label>
 
                 <ul>
-                    <li><a id="click_mn" href="#">Modo Nocturno</a></li>
-                    <div class="underline"></div>
-                    <li><a href="favourites.html" id="linkFav">Favoritos</a></li>
-                    <div class="underline"></div>
+                    <li><a id="click_mn" href="#">Modo Nocturno</a>
+                        <div class="underline"></div>
+                    </li>
+                    
+                    <li><a href="favourites.html" id="linkFav">Favoritos</a>
+                        <div class="underline"></div>
+                    </li>
+                    
                     <li><a href="mis_gifos.html">Mis GIFOS</a></li>
                     <li><a href="create_gifos.html"><img id="create" src="assets/button-crear-gifo.svg" alt=""></a></li>
                 </ul>
@@ -55,7 +59,7 @@
                         <div class="search_input">
                             <input type="text" name="Busca GIFOS y más" id="searchInput"
                                 placeholder="Busca GIFOS y más">
-                            <div class="autocomplet-box" id="suggestion">
+                            <ul class="autocomplet-box" id="suggestion">
 
                                 <li>
                                     <img class="lupaSug" src="assets/icon-search.svg" alt="">
@@ -77,7 +81,7 @@
                                     <a class="jsSug" href=""></a>
                                 </li>
 
-                            </div>
+                            </ul>
 
                             <img class="lupa" id="lupaSug" src="assets/icon-search.svg" alt="">
                             <img class="close" id="close" src="assets/close.svg" alt="">
@@ -95,7 +99,7 @@
         <div id="results">
             <div id="titleSearch">
                 <div id="lineTitle"></div>
-                <h2 id="resultsTitle"></h2>
+                <h2 id="resultsTitle">.</h2>
             </div>
             <div class="gifosGrid"></div>
             <input type="button" id="seeMore" value="VER MÁS">
@@ -111,7 +115,7 @@
 
             <div class="preview_gifos">
                 <div class="slider_gifos">
-                    <img class="arrow" id="left" src="assets/button-slider-left.svg" alt="">
+                    <img class="arrow left" src="assets/button-slider-left.svg" alt="">
                     <div class="gifos_carrousel">
                         <div class="gifos">
                             <div class="icons_gifos">
@@ -146,7 +150,7 @@
                                 <img class="downS icons" src="assets/icon-download.svg" alt="">
                                 <img class="maxS icons" src="assets/icon-max-normal.svg" alt="">
                             </div>
-                            <img class="gif" id="gif3" src="" alt="">
+                            <img class="gif" id="gif3" src="#" alt="">
                             <div class="user">
                                 <h2 id="h23">User</h2>
                                 <p id="p3">Titulo gifos</p>
@@ -154,7 +158,7 @@
                         </div>
 
                     </div>
-                    <img class="arrow" id="right" src="assets/button-slider-right.svg" alt="">
+                    <img class="arrow right" src="assets/button-slider-right.svg" alt="">
                 </div>
             </div>
 

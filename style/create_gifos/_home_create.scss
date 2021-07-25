@@ -8,7 +8,7 @@ body {
 }
 
 
-//HEADER //////////////////////////////////////@at-root
+//HEADER //////////////////////////////////////
 
 header {
     .line {
@@ -118,11 +118,6 @@ main {
 
     // CREATE /////////////////////
     .create {
-
-        /*display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 60vh;*/
         display: grid;
         grid-template-columns: 20fr 60fr 20fr;
         
@@ -192,116 +187,121 @@ main {
 
                     video {
                         display: none;
+                        height: 90%;
+                        width: 90%;
+
                     }
 
-                    .preview{
-                        box-sizing: border-box;
-    position: relative;
-    #gif{
-      width: 350px;
-      height: auto;
-    }
-    .overlay {
-      box-sizing: border-box;
-      position: absolute;
-      top: 0;
-      box-sizing: border-box;
-      background: rgba(87, 46, 229, 0.6); /* Black see-through */
-      height: 100%;
-      width: 100%;
-      transition: 0.5s ease;
-      opacity: 0;
-      display: flex;
-      justify-content: center;
-      align-content: space-between;
-      flex-direction: column;
-      .estado {
-        display: block;/////////////////////////////////////////////////////////////////////// aca me agranda el desktop
-        color: white;
-        text-align: center;
-        font-family: "Montserrat", sans-serif;
-        position: relative;
-      }
-      .icon {
-        position: absolute;
-        top: 4px;
-        right: 4px;
-        #copy {
-          opacity: 0.7;
-        }
-        #download {
-          opacity: 0.7;
-        }
-        #copy:hover {
-          opacity: 1;
-        }
-        #download:hover {
-          opacity: 1;
-        }
-      }
-    }
+                    .preLoad{
+                            box-sizing: border-box;
+                            position: relative;
+                            width: 80%;
+                        
+                        #preLoadGif {
+                            width: 100%;
+                        }
+
+                        .overlay {
+                            box-sizing: border-box;
+                            position: absolute;
+                            top: 0;
+                            box-sizing: border-box;
+                            background: rgba(87, 46, 229, 0.6); 
+                            height: 100%;
+                            width: 100%;
+                            transition: 0.5s ease;
+                            opacity: 0;
+                            display: flex;
+                            justify-content: center;
+                            align-content: space-between;
+                            flex-direction: column;
+                            
+                            .overlayMode {
+                                flex-direction: column;
+                                align-items:  center; 
+                                color: $color-white;
+                                text-align: center;
+                                font-family: $font-montserrat;
+                                position: relative;
+                            }
+
+                            .iconPL {
+                                position: absolute;
+                                top: 4px;
+                                right: 4px;
+                                .iconPLink{
+                                    opacity: 0.7;
+                                    cursor:pointer;
+                                }
+                                .iconPLDonw {
+                                    opacity: 0.7;
+                                    cursor:pointer;
+                                }
+                                .iconPLink:hover {
+                                    opacity: 1;
+                                }
+                                .iconPLDonw:hover {
+                                    opacity: 1;
+                                }
+                            }
+                        }
                     }
-                    
-    
                 }
-    
-    
             }
         }
-        
     }
 
-    //NUMBERS/////////////////////////
-    
-    .numbers {
-        display: grid;
-        grid-template-columns: 20fr 60fr 20fr;
-        position: relative;
-
-        #clock {
-            display: none;
-            position: absolute;
-            right: 25vw;
-            top: 35px;
-            font-weight: bold;
-        }
-
-        #repeat {
-            display: none;
-            position: absolute;
-            right: 25vw;
-            top: 35px;
-            font-weight: bold;
-            font-size: 13px;
-            padding-bottom: 3px;
-            cursor: pointer;
+            //NUMBERS/////////////////////////
             
-            &:hover {
-                border-bottom: 3px solid $color-secondary;
-            }
-        }
+            .numbers {
+                display: grid;
+                grid-template-columns: 20fr 60fr 20fr;
+                position: relative;
 
-        .steps {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: auto;
-            grid-column: 2/3;
+                #clock {
+                    display: none;
+                    position: absolute;
+                    right: 25vw;
+                    top: 35px;
+                    font-weight: bold;
+                }
+
+                #repeat {
+                    display: none;
+                    position: absolute;
+                    right: 25vw;
+                    top: 35px;
+                    font-weight: bold;
+                    font-size: 13px;
+                    padding-bottom: 3px;
+                    cursor: pointer;
+                    
+                    &:hover {
+                        border-bottom: 3px solid $color-secondary;
+                    }
+                }
+
+                .steps {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: auto;
+                    grid-column: 2/3;
 
 
-            img {
-                padding: 0 3%;
-                font-family: $font-roboto;
+                    img {
+                        padding: 0 3%;
+                        font-family: $font-roboto;
+                        
+                    }
+                        
+                }
                 
+                .pelicula {
+                    position: relative;
+                    bottom: 10px;
+                }
             }
-                
-        }
-        
-        .pelicula {
-            position: relative;
-            bottom: 10px;
-        }
-    }
     
     .line_create {
         display: grid;

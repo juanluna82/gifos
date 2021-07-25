@@ -1,6 +1,6 @@
 @media screen and (min-width: 800px) {
 
-    //HEADER /////////////////////////////@at-root
+    //HEADER /////////////////////////////
     
         header {
             .header_nav {
@@ -258,12 +258,13 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            width: 100%;
+                            
     
                               
                             .gifos {
                                 position: relative;
-                                margin: 0 2%;
+                                margin: 0 1%;
+                                width: 50%;
                                 
                                 &:hover {
                                     background-color: $color-principal;
@@ -298,15 +299,16 @@
     
                                 &:hover .icons_gifos {
                                     position: absolute;
-                                    right: 0;
+                                    right: 10px;
                                     top: 0;
                                     display: flex;
                                     padding: 2%;
-                                    width: 40%;
-                                    z-index: 4;
+                                    padding-right: 5%;
+                                    //width: 40%;
+                                    z-index: 400;
                                     
     
-                                    a {
+                                    img {
                                         padding: 3%;
                                         z-index: 0;
                                         
@@ -321,7 +323,7 @@
     
                                 .gif {
                                     width: 100%;
-                                    max-width: unset;
+                                    //max-width: unset;
                                     height: 25vw;
                                     z-index: -1;
     
