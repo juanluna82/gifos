@@ -119,9 +119,9 @@ clickNoc.addEventListener('click', () => {
                         createNight.setAttribute("src", "assets/CTA-crear-gifo-hover-modo-noc.svg");
                 })
                 //INPUT  X
-                //let close = document.getElementById("close");
-                //close.setAttribute("src", "assets/close-modo-noct.svg");
-                
+                let close = document.getElementById("close");
+                close.setAttribute("src", "assets/close-modo-noct.svg");
+
                 // INPUT LUPAS
                 document.getElementById("lupaSug").setAttribute("src", "assets/icon-search-modo-noct.svg");
                 let lupaSug = document.getElementsByClassName("lupaSug");
@@ -151,7 +151,7 @@ clickNoc.addEventListener('click', () => {
 
                 // HOVER de ARROW Right/////////////////////
                 arrowRight.addEventListener('mouseover', () => {
-                        //arrowRight.setAttribute("src", "assets/button-slider-right-hover.svg");
+                        arrowRight.setAttribute("src", "assets/button-slider-right-hover.svg");
                 })
 
                 arrowRight.addEventListener('mouseout', () => {
@@ -199,9 +199,6 @@ clickNoc.addEventListener('click', () => {
                         inst_hover = document.getElementById("inst_hover");
                         inst.setAttribute("src", "assets/icon_instagram.svg");
                 })
-
-
-
         }
 
         //ELSE VUELTA AL DIURNO///        
@@ -311,13 +308,4 @@ clickNoc.addEventListener('click', () => {
 
         }
 });
-
-
-
-
-
-
-/// let menu abierto on clik abri menu
-
-
 

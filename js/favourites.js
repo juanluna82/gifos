@@ -2,13 +2,6 @@
 
 
 let favDiv = document.getElementById("favDiv");
-//let trendingGifos = document.getElementsByClassName("trending_gifos")[0];
-//let navBar = document.getElementsByClassName("navBar")[0];
-//let searchDiv = document.getElementsByClassName("search")[0];
-//let footer = document.getElementsByClassName("footer")[0];
-//let logo = document.getElementsByClassName("logo")[0];
-//let line1 = document.getElementsByClassName("line")[0];
-//let line2 = document.getElementsByClassName("line")[1];
 let newRetrievedObject = [];
 let blockFavClick = 0;
 
