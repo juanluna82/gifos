@@ -1,7 +1,7 @@
 
 
 
-let favDiv = document.getElementById("favDiv");
+//let favDiv = document.getElementById("favDiv");
 let newRetrievedObject = [];
 let blockFavClick = 0;
 
@@ -60,8 +60,6 @@ function clickFav() {
             FavTitle.innerHTML = '"¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"';
             FavTitle.setAttribute("class", "FavTitle");
 
-
-            console.log("FAVORITOS SIN RESULTADOS");
             break;
         } else {
 
@@ -118,7 +116,6 @@ function clickFav() {
                     localStorage.removeItem(`${urlId[index]}`);
                     blockFavClick = 0;
                     newRetrievedObject = [];
-                    console.log("TRASH", newRetrievedObject);
                     favDiv.style.display = "none";
                     clickFav();
                 })
@@ -126,7 +123,7 @@ function clickFav() {
 
                 ///// CLICK en ICONO DOWNLOAD
                 download.addEventListener("click", () => {
-                    console.log(gifo.src)
+
                     fetch(gifo.src)
                         .then((response) => response.blob())
                         .then(function (myGifBlob) {
@@ -136,7 +133,6 @@ function clickFav() {
 
                 ///// CLICK en ICONO MAXIMIZE
                 aMax.addEventListener("click", () => {
-                    console.log("aca estoy");
                     trendingGifos.style.display = "none";
                     favDiv.style.display = "none";
                     navBar.style.display = "none";
@@ -165,7 +161,6 @@ function clickFav() {
                     // CLOSE EN MAX///
 
                     xImgDiv.addEventListener("click", () => {
-                        console.log("aca estoy")
                         maxDiv.style.display = "none";
                         trendingGifos.style.display = "block";
                         favDiv.style.display = "flex";
@@ -229,14 +224,13 @@ function clickFav() {
                     iconsGifos.appendChild(aDownload);
                     let download = document.createElement("img");
                     aDownload.appendChild(download);
-                    download.setAttribute("class", "downS");
+                    download.setAttribute("class", "downSF");
                     download.setAttribute("src", "assets/icon-download.svg");
                     hoverSearch(download, "assets/icon-download-hover.svg", "assets/icon-download.svg");
 
 
                     ///// CLICK en ICONO DOWNLOAD
                     download.addEventListener("click", () => {
-                        console.log(gifo.src)
                         fetch(gifo.src)
                             .then((response) => response.blob())
                             .then(function (myGifBlob) {
@@ -279,8 +273,6 @@ function clickFav() {
 
     }
     blockFavClick = 1;
-    console.log("blockFavClick", blockFavClick);
-    console.log("newRetrievedObject", newRetrievedObject);
 }
 
 
@@ -289,13 +281,10 @@ clickFav();
 
 
 function gifDown(blob, idBlob) {
-    console.log("user" + idBlob);
     var objectURL = URL.createObjectURL(blob);
-    console.log(objectURL);
     let flags = document.createElement("a");
     flags.href = objectURL;
     flags.download = `Gif DOwnload ${newRetrievedObject[idBlob - 1].user + idBlob}.gif`;
-    console.log(flags)
     flags.click();
 }
 

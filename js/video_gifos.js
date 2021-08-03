@@ -51,7 +51,6 @@ start.addEventListener("click", () => {
             
 
     }
-    console.log("tape = " + tape);
 
     if (tape == 2) {
         recorder = RecordRTC(miVideo.srcObject, {
@@ -74,7 +73,6 @@ start.addEventListener("click", () => {
         repeat.style.display = "block";
         repeat.addEventListener("click", () => {
             tape = 0;
-            console.log(tape)
             repeat.style.display = "none";
             start.textContent = "GRABAR";
             start.setAttribute("style", "display: block");
@@ -93,7 +91,6 @@ start.addEventListener("click", () => {
     if (tape == 4) {
 
         uploadGif(newGif);
-        console.log("estoy subiendo mi gif");
         overlay = document.getElementById("overlay")
         overlay.setAttribute("style", "opacity:1;")
         two.setAttribute("src", "assets/paso-a-paso-2.svg");
@@ -116,7 +113,6 @@ function stopRecordingCallback() {
     preLoadGif.style.display = "block";
     recorder.stream.stop();
     newGif.append("file", recorder.getBlob(), "myGif.gif");
-    console.log(newGif.get("file"));
     recorder.destroy();
     recorder = null;
 }
@@ -139,9 +135,7 @@ function stopRecordingCallback() {
           // guardo los gifs grabados en  un array//////
         let GifSaved = res.data.id;
         myGifSaved.push(GifSaved)
-        console.log("ID de Gif subido", myGifSaved);
         localStorage.setItem("myGifs", JSON.stringify(myGifSaved));
-
         document.getElementById("texto").textContent= "GIFO subido con éxito"
         loaderImg = document.getElementById("loader");
         loaderImg.setAttribute("src","assets/ok.svg");

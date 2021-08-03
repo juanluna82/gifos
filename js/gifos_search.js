@@ -57,7 +57,6 @@ searchInput.addEventListener("keyup", (e) => {
     // IF PRESS ENTER
     if (e.key === 'Enter') {
         resultsTitle.innerHTML = searchString;
-        console.log(resultsTitle.innerHTML);
         // TRAE LOS RESULTADOS DE LOS GIF BUSCADOS//
         gifoResult(searchString);
         // reemplaza close con lupa
@@ -102,7 +101,6 @@ searchInput.addEventListener("keyup", (e) => {
 function select(element) {
     event.preventDefault();
     let selectUserData = element.textContent;
-    console.log(selectUserData);
     searchInput.value = selectUserData;
     gifoResult(selectUserData);
     // reemplaza close con lupa
@@ -191,19 +189,12 @@ function gifoResult(searchString) {
 
             ///// CLICK en ICONO FAVORITO
             favourites.addEventListener("click", () => {
-
-                console.log(favourites);
                 let encontrado = localStorage.getItem(`${urlId}`);
-                console.log("buscamos = " + encontrado);
-                console.log(localStorage.getItem(`${urlId}`));
                 if (encontrado === null) {
-                    console.log(` agrega ${urlId}`);
-                    console.log(urlSearch);
                     localStorage.setItem(`${urlId}`, `{"url": "${urlSearch}", "user": "${userGif}", "title": "${titleGif}"}`);
                     favourites.setAttribute("src", "assets/icon-fav-active.svg")
                     hoverSearch(favourites, "assets/icon-fav-active.svg", "assets/icon-fav-active.svg");
                 } else {
-                    console.log("borro de favoritos");
                     localStorage.removeItem(`${urlId}`);
                     favourites.setAttribute("src", "assets/icon-fav.svg")
                     hoverSearch(favourites, "assets/icon-fav-hover.svg", "assets/icon-fav.svg");
@@ -215,27 +206,22 @@ function gifoResult(searchString) {
             //CLICK EN ICONO DOWNLOAD////
 
             download.addEventListener("click", () => {
-                console.log(gifo.src)
                 fetch(gifo.src)
                     .then((response) => response.blob())
                     .then(function (myGifBlob) {
-                        gifDown(myGifBlob, i,urlSearch);
+                        gifDown(myGifBlob, i, urlSearch);
                     });
             })
 
 
             ///// CLICK en ICONO MAXIMIZE
             aMax.addEventListener("click", () => {
-                console.log("aca estoy");
-                
                 results.style.display = "none";
-                
-                //favDiv.style.display = "none";
                 navBar.style.display = "none";
                 footer.style.display = "none";
                 searchDiv.style.display = "none";
                 trendingGifos.style.display = "none";
-                
+
                 line2.style.display = "none";
                 line1.style.opacity = "0.5";
                 logo.style.opacity = "0.5";
@@ -260,8 +246,8 @@ function gifoResult(searchString) {
                 // CLOSE EN MAX///
 
                 xImgDiv.addEventListener("click", () => {
-                    console.log("aca estoy")
                     maxDiv.style.display = "none";
+                    searchDiv.style.display = "flex";
                     trendingGifos.style.display = "block";
                     results.style.display = "flex";
                     navBar.style.display = "block";
@@ -272,71 +258,70 @@ function gifoResult(searchString) {
                     clickFav();
                 })
 
-                
-                    // crear div con el overlay con iconos en cada gifos////
 
-                    //////////// TRAE GIFOS DE LA API//////////////////
-                    let gifo = document.createElement("img");
-                    gifo.setAttribute("src", json.data[i].images.fixed_width.url);
-                    gifo.setAttribute("class", "gif");
-                    favMax.appendChild(gifo);
+                // crear div con el overlay con iconos en cada gifos////
 
-                    //div general
-                    let divGifos = document.createElement("div");
-                    favMax.appendChild(divGifos);
-                    divGifos.setAttribute("class", "gifos");
+                //////////// TRAE GIFOS DE LA API//////////////////
+                let gifo = document.createElement("img");
+                gifo.setAttribute("src", json.data[i].images.fixed_width.url);
+                gifo.setAttribute("class", "gif");
+                favMax.appendChild(gifo);
 
-
-
-                    /// User  y Titulo del GIFOS traido de la API/////
-
-                    // div contenedor user///
-                    let divUser = document.createElement("div");
-                    divGifos.appendChild(divUser)
-                    divUser.setAttribute("class", "user");
-                    // h2 user///
-                    let user = document.createElement("h2");
-                    user.innerHTML = json.data[i].username;
-                    divUser.appendChild(user);
-                    // p user///
-                    let pUser = document.createElement("p");
-                    pUser.innerHTML = json.data[i].title;
-                    divUser.appendChild(pUser);
+                //div general
+                let divGifos = document.createElement("div");
+                favMax.appendChild(divGifos);
+                divGifos.setAttribute("class", "gifos");
 
 
-                    //div contenedor de iconos
-                    let iconsGifos = document.createElement("div");
-                    divGifos.appendChild(iconsGifos);
-                    iconsGifos.setAttribute("class", "icons_gifos");
 
-                    //icono favoritos//
-                    let aTrash = document.createElement("a");
-                    iconsGifos.appendChild(aTrash);
-                    let trash = document.createElement("img");
-                    aTrash.appendChild(trash);
-                    trash.setAttribute("class", "favSearch");
-                    trash.setAttribute("src", "assets/icon-fav-active.svg");
+                /// User  y Titulo del GIFOS traido de la API/////
 
-
-                    //icono download//
-                    let aDownload = document.createElement("a");
-                    iconsGifos.appendChild(aDownload);
-                    let download = document.createElement("img");
-                    aDownload.appendChild(download);
-                    download.setAttribute("class", "downS");
-                    download.setAttribute("src", "assets/icon-download.svg");
-                    hoverSearch(download, "assets/icon-download-hover.svg", "assets/icon-download.svg");
+                // div contenedor user///
+                let divUser = document.createElement("div");
+                divGifos.appendChild(divUser)
+                divUser.setAttribute("class", "user");
+                // h2 user///
+                let user = document.createElement("h2");
+                user.innerHTML = json.data[i].username;
+                divUser.appendChild(user);
+                // p user///
+                let pUser = document.createElement("p");
+                pUser.innerHTML = json.data[i].title;
+                divUser.appendChild(pUser);
 
 
-                    ///// CLICK en ICONO DOWNLOAD
-                    download.addEventListener("click", () => {
-                        console.log(gifo.src)
-                        fetch(gifo.src)
-                            .then((response) => response.blob())
-                            .then(function (myGifBlob) {
-                                gifDown(myGifBlob, i);
-                            });
-                    })
+                //div contenedor de iconos
+                let iconsGifos = document.createElement("div");
+                divGifos.appendChild(iconsGifos);
+                iconsGifos.setAttribute("class", "icons_gifos");
+
+                //icono favoritos//
+                let aTrash = document.createElement("a");
+                iconsGifos.appendChild(aTrash);
+                let trash = document.createElement("img");
+                aTrash.appendChild(trash);
+                trash.setAttribute("class", "favSearch");
+                trash.setAttribute("src", "assets/icon-fav-active.svg");
+
+
+                //icono download//
+                let aDownload = document.createElement("a");
+                iconsGifos.appendChild(aDownload);
+                let download = document.createElement("img");
+                aDownload.appendChild(download);
+                download.setAttribute("class", "downS");
+                download.setAttribute("src", "assets/icon-download.svg");
+                hoverSearch(download, "assets/icon-download-hover.svg", "assets/icon-download.svg");
+
+
+                ///// CLICK en ICONO DOWNLOAD
+                download.addEventListener("click", () => {
+                    fetch(gifo.src)
+                        .then((response) => response.blob())
+                        .then(function (myGifBlob) {
+                            gifDown(myGifBlob, i);
+                        });
+                })
 
 
 
@@ -407,11 +392,7 @@ function hoverSearch(x, urlOver, urlOut) {
     x.addEventListener('mouseout', mouseOut);
 }
 
-
-console.log(vermas);
-
 vermas.addEventListener("click", () => {
-    console.log("click ver mas")
     offset += 12;
     gifoResult(searchString);
 })
@@ -419,11 +400,9 @@ vermas.addEventListener("click", () => {
 
 
 function gifDown(blob, idBlob, newRetrievedObject) {
-       var objectURL = URL.createObjectURL(blob);
-    console.log(objectURL);
+    var objectURL = URL.createObjectURL(blob);
     let flags = document.createElement("a");
     flags.href = objectURL;
     flags.download = `Gif DOwnload ${idBlob}.gif`;
-    console.log(flags)
     flags.click();
 }

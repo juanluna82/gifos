@@ -18,7 +18,7 @@
 
 <body>
 
-    <header>
+    <header class="header">
         <div class="line"></div>
         <div class="header_nav">
             <a href="index.html">
@@ -26,7 +26,7 @@
             </a>
 
 
-            <nav>
+            <nav class="navBar">
                 <input type="checkbox" id="menu">
                 <label id="burger" class="menu_h" for="menu"><i class="fas fa-bars"></i></label>
                 <label class="menu_x" for="menu"><i class="fas fa-times"></i></label>
@@ -35,11 +35,11 @@
                     <li><a id="click_mn" href="#">Modo Nocturno</a>
                         <div class="underline"></div>
                     </li>
-
+                    
                     <li><a href="favourites.html" id="linkFav">Favoritos</a>
                         <div class="underline"></div>
                     </li>
-
+                    
                     <li><a href="mis_gifos.html">Mis GIFOS</a></li>
                     <li><a href="create_gifos.html"><img id="create" src="assets/button-crear-gifo.svg" alt=""></a></li>
                 </ul>
@@ -49,7 +49,6 @@
     </header>
 
     <main id="main">
-
         <div class="search"> </div>
 
         <div class="trending_gifos">
@@ -65,13 +64,9 @@
                     <div class="gifos_carrousel">
                         <div class="gifos">
                             <div class="icons_gifos">
-                                <img id="favourites1" class="fav" src="assets/icon-fav.svg" alt="">
-
-                                <a href="#" target="_blank"><img class="down" src="assets/icon-download.svg"
-                                        alt="#"></a>
-
-                                <a href="#" target="_blank"><img class="max" src="assets/icon-max-normal.svg"
-                                        alt="#"></a>
+                                <img class="fav icons" id="fav1" src="assets/icon-fav.svg" alt="">
+                                <img class="downS icons" src="assets/icon-download.svg" alt="">
+                                <img class="maxS icons" src="assets/icon-max-normal.svg" alt="">
 
                             </div>
                             <img class="gif" id="gif1" src="https://picsum.photos/200/200" alt="">
@@ -83,13 +78,9 @@
                         </div>
                         <div class="gifos">
                             <div class="icons_gifos">
-                                <img id="favourites2" class="fav" src="assets/icon-fav.svg" alt="#">
-
-                                <a href="#" target="_blank"><img class="down" src="assets/icon-download.svg"
-                                        alt="#"></a>
-
-                                <a href="#" target="_blank"><img class="max" src="assets/icon-max-normal.svg"
-                                        alt="#"></a>
+                                <img class="fav icons" id="fav2" src="assets/icon-fav.svg" alt="">
+                                <img class="downS icons" src="assets/icon-download.svg" alt="">
+                                <img class="maxS icons" src="assets/icon-max-normal.svg" alt="">
                             </div>
                             <img class="gif" id="gif2" src="https://picsum.photos/200/200" alt="">
                             <div class="user">
@@ -100,13 +91,9 @@
 
                         <div class="gifos">
                             <div class="icons_gifos">
-                                <img id="favourites3" class="fav" src="assets/icon-fav.svg" alt="">
-
-                                <a href="#" target="_blank"><img class="down" src="assets/icon-download.svg"
-                                        alt="#"></a>
-
-                                <a href="#" target="_blank"><img class="max" src="assets/icon-max-normal.svg"
-                                        alt="#"></a>
+                                <img class="fav icons" id="fav3" src="assets/icon-fav.svg" alt="">
+                                <img class="downS icons" src="assets/icon-download.svg" alt="">
+                                <img class="maxS icons" src="assets/icon-max-normal.svg" alt="">
                             </div>
                             <img class="gif" id="gif3" src="#" alt="">
                             <div class="user">
@@ -125,7 +112,7 @@
 
     </main>
 
-    <footer>
+    <footer class ="footer"> 
         <div class="social">
             <p>Compartir en:</p>
 
